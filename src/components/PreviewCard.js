@@ -134,7 +134,7 @@ const PreviewCard = ({ font }) => {
 				HEADING
 			</p>
 			<Text
-				family={(font && font.family) || "Roboto"}
+				family={(font && font.family) || "Open Sans"}
 				className="text-5xl font-black text-blue-700 m-0 p-0"
 				contentEditable="true"
 				suppressContentEditableWarning={true}
@@ -146,7 +146,7 @@ const PreviewCard = ({ font }) => {
 				PARAGRAPH
 			</p>
 			<Text
-				family={(font && font.family) || "Roboto"}
+				family={(font && font.family) || "Open Sans"}
 				className="text-base text-blue-900 m-0 p-0"
 				contentEditable="true"
 				suppressContentEditableWarning={true}
@@ -160,15 +160,15 @@ const PreviewCard = ({ font }) => {
 				BUTTON
 			</p>
 			<Button
-				family={(font && font.family) || "Roboto"}
-				className="text-base font-bold text-white m-0 px-8 py-2 bg-blue-600 rounded-lg border-none mr-4"
+				family={(font && font.family) || "Open Sans"}
+				className="text-base font-bold text-white m-0 px-8 py-2 bg-blue-600 rounded-lg border-none mr-4 mb-2 lg:mb-0"
 				contentEditable="true"
 				suppressContentEditableWarning={true}
 			>
 				Sign in with Google
 			</Button>{" "}
 			<Button
-				family={(font && font.family) || "Roboto"}
+				family={(font && font.family) || "Open Sans"}
 				className="text-base font-bold text-white m-0 px-8 py-2 bg-gray-800 rounded-lg border-none"
 				contentEditable="true"
 				suppressContentEditableWarning={true}
@@ -182,23 +182,23 @@ const PreviewCard = ({ font }) => {
 			<div className="flex flex-row">
 				<div className="flex flex-col w-1/2">
 					<Label
-						family={(font && font.family) || "Roboto"}
+						family={(font && font.family) || "Open Sans"}
 						className="text-sm font-sen font-medium text-gray-500 mb-2"
 					>
 						Enter your email
 					</Label>
 
 					<Input
-						family={(font && font.family) || "Roboto"}
+						family={(font && font.family) || "Open Sans"}
 						type="text"
 						placeholder="john.doe@noobs.com"
-						className="border-blue-700 w-64 bg-blue-100 border-b-2 rounded-lg py-2 px-4 font-sen"
+						className="border-blue-700 bg-blue-100 border-b-2 rounded-lg py-2 px-4 font-sen mr-4"
 					/>
 				</div>
 				<div className="flex flex-col w-1/2">
 					<br />
 					<Label
-						family={(font && font.family) || "Roboto"}
+						family={(font && font.family) || "Open Sans"}
 						className="md:w-2/3 block font-medium"
 					>
 						<input className="mr-2 leading-tight" type="checkbox" />
@@ -213,8 +213,8 @@ const PreviewCard = ({ font }) => {
 				ALERT
 			</p>
 			<Div
-				family={(font && font.family) || "Roboto"}
-				className="bg-blue-100 border-l-4 border-blue-500 rounded w-1/2 text-blue-900 px-4 py-3 shadow-md"
+				family={(font && font.family) || "Open Sans"}
+				className="bg-blue-100 border-l-4 border-blue-500 rounded sm:w-full lg:w-1/2 text-blue-900 px-4 py-3 shadow-md"
 				role="alert"
 			>
 				<div className="flex">
@@ -242,7 +242,7 @@ const PreviewCard = ({ font }) => {
 			</p>
 			<Div
 				className="max-w-sm rounded-lg overflow-hidden shadow-md"
-				family={(font && font.family) || "Roboto"}
+				family={(font && font.family) || "Open Sans"}
 			>
 				<img
 					className="w-full h-32"
@@ -266,19 +266,19 @@ const PreviewCard = ({ font }) => {
 			</p>
 			<div>
 				<Tag
-					family={(font && font.family) || "Roboto"}
+					family={(font && font.family) || "Open Sans"}
 					className="inline-block bg-blue-200 rounded-lg px-3 py-1 text-sm font-medium text-gray-700 mr-2"
 				>
 					#photography
 				</Tag>
 				<Tag
-					family={(font && font.family) || "Roboto"}
+					family={(font && font.family) || "Open Sans"}
 					className="inline-block bg-gray-200 rounded-lg px-3 py-1 text-sm font-medium text-gray-700 mr-2"
 				>
 					#travel
 				</Tag>
 				<Tag
-					family={(font && font.family) || "Roboto"}
+					family={(font && font.family) || "Open Sans"}
 					className="inline-block bg-blue-200 rounded-lg px-3 py-1 text-sm font-medium text-gray-700"
 				>
 					#winter

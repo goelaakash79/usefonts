@@ -51,7 +51,7 @@ const Container = () => {
 	};
 	const tempfonts = fonts && fonts.length >= 900 ? fonts.slice(0, 50) : fonts;
 	return (
-		<div className="flex gap-4">
+		<div className="flex gap-4" id="main-container">
 			<div className="w-4/12">
 				<SearchBox onSearch={handleSearch} />
 				{loading ? (

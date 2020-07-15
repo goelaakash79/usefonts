@@ -284,6 +284,7 @@ template {
 h1,
 h2,
 hr,
+figure,
 p {
   margin: 0;
 }
@@ -887,10 +888,6 @@ img {
   width: 2rem;
 }
 
-.w-64{
-  width: 16rem;
-}
-
 .w-1\/2{
   width: 50%;
 }
@@ -967,6 +964,13 @@ img {
   }
 }
 
+@media (min-width: 640px){
+
+  .sm\:w-full{
+    width: 100%;
+  }
+}
+
 @media (min-width: 768px){
 
   .md\:text-4xl{
@@ -982,5 +986,13 @@ img {
 
   .lg\:text-5xl{
     font-size: 3rem;
+  }
+
+  .lg\:mb-0{
+    margin-bottom: 0;
+  }
+
+  .lg\:w-1\/2{
+    width: 50%;
   }
 }
