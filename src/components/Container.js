@@ -60,7 +60,11 @@ const Container = () => {
 					</div>
 				) : (
 					<FontList
-						fonts={fonts.length >= 900 ? fonts.slice(0, 50) : fonts}
+						fonts={
+							fonts && fonts.length >= 900
+								? fonts.slice(0, 50)
+								: fonts
+						}
 						allfonts={allfonts}
 						cardClick={handleClick}
 					/>
