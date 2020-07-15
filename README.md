@@ -39,3 +39,8 @@ yarn start
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+
+## 📝 License
+
+Copyright © 2020 [Aakash Goel](https://github.com/goelaakash79).<br />
+This project is [MIT](https://github.com/goelaakash79/font-preview/blob/master/LICENSE) licensed.
