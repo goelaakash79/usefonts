@@ -134,7 +134,7 @@ const PreviewCard = ({ font }) => {
 				HEADING
 			</p>
 			<Text
-				family={(font && font.family) || "Arial"}
+				family={(font && font.family) || "Roboto"}
 				className="text-5xl font-black text-blue-700 m-0 p-0"
 				contentEditable="true"
 				suppressContentEditableWarning={true}
@@ -146,7 +146,7 @@ const PreviewCard = ({ font }) => {
 				PARAGRAPH
 			</p>
 			<Text
-				family={(font && font.family) || "Arial"}
+				family={(font && font.family) || "Roboto"}
 				className="text-base text-blue-900 m-0 p-0"
 				contentEditable="true"
 				suppressContentEditableWarning={true}
@@ -160,7 +160,7 @@ const PreviewCard = ({ font }) => {
 				BUTTON
 			</p>
 			<Button
-				family={(font && font.family) || "Arial"}
+				family={(font && font.family) || "Roboto"}
 				className="text-base font-bold text-white m-0 px-8 py-2 bg-blue-600 rounded-lg border-none mr-4"
 				contentEditable="true"
 				suppressContentEditableWarning={true}
@@ -168,7 +168,7 @@ const PreviewCard = ({ font }) => {
 				Sign in with Google
 			</Button>{" "}
 			<Button
-				family={(font && font.family) || "Arial"}
+				family={(font && font.family) || "Roboto"}
 				className="text-base font-bold text-white m-0 px-8 py-2 bg-gray-800 rounded-lg border-none"
 				contentEditable="true"
 				suppressContentEditableWarning={true}
@@ -182,14 +182,14 @@ const PreviewCard = ({ font }) => {
 			<div className="flex flex-row">
 				<div className="flex flex-col w-1/2">
 					<Label
-						family={(font && font.family) || "Arial"}
+						family={(font && font.family) || "Roboto"}
 						className="text-sm font-sen font-medium text-gray-500 mb-2"
 					>
 						Enter your email
 					</Label>
 
 					<Input
-						family={(font && font.family) || "Arial"}
+						family={(font && font.family) || "Roboto"}
 						type="text"
 						placeholder="john.doe@noobs.com"
 						className="border-blue-700 w-64 bg-blue-100 border-b-2 rounded-lg py-2 px-4 font-sen"
@@ -198,8 +198,8 @@ const PreviewCard = ({ font }) => {
 				<div className="flex flex-col w-1/2">
 					<br />
 					<Label
-						family={(font && font.family) || "Arial"}
-						className="md:w-2/3 block font-semibold"
+						family={(font && font.family) || "Roboto"}
+						className="md:w-2/3 block font-medium"
 					>
 						<input className="mr-2 leading-tight" type="checkbox" />
 						<span className="text-sm text-gray-600">
@@ -213,7 +213,7 @@ const PreviewCard = ({ font }) => {
 				ALERT
 			</p>
 			<Div
-				family={(font && font.family) || "Arial"}
+				family={(font && font.family) || "Roboto"}
 				className="bg-blue-100 border-l-4 border-blue-500 rounded w-1/2 text-blue-900 px-4 py-3 shadow-md"
 				role="alert"
 			>
@@ -241,12 +241,12 @@ const PreviewCard = ({ font }) => {
 				CARD
 			</p>
 			<Div
-				className="max-w-sm rounded overflow-hidden shadow-lg"
-				family={(font && font.family) || "Arial"}
+				className="max-w-sm rounded-lg overflow-hidden shadow-md"
+				family={(font && font.family) || "Roboto"}
 			>
 				<img
 					className="w-full h-32"
-					src="https://via.placeholder.com/600x300"
+					src="https://picsum.photos/400/200/?blur=5"
 					alt="Sunset in the mountains"
 				/>
 				<div className="px-6 py-4">
@@ -266,19 +266,19 @@ const PreviewCard = ({ font }) => {
 			</p>
 			<div>
 				<Tag
-					family={(font && font.family) || "Arial"}
+					family={(font && font.family) || "Roboto"}
 					className="inline-block bg-blue-200 rounded-lg px-3 py-1 text-sm font-medium text-gray-700 mr-2"
 				>
 					#photography
 				</Tag>
 				<Tag
-					family={(font && font.family) || "Arial"}
+					family={(font && font.family) || "Roboto"}
 					className="inline-block bg-gray-200 rounded-lg px-3 py-1 text-sm font-medium text-gray-700 mr-2"
 				>
 					#travel
 				</Tag>
 				<Tag
-					family={(font && font.family) || "Arial"}
+					family={(font && font.family) || "Roboto"}
 					className="inline-block bg-blue-200 rounded-lg px-3 py-1 text-sm font-medium text-gray-700"
 				>
 					#winter
