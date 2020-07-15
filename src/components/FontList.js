@@ -10,10 +10,6 @@ const FontList = ({ fonts, allfonts, cardClick }) => {
 	};
 	return (
 		<div className="overflow-y-scroll h-screen" onScroll={handleScroll}>
-			<p className="capitalize font-sen font-bold text-gray-500 mb-4">
-				Total Fonts: {fonts && fonts.length} /{" "}
-				{allfonts && allfonts.length}
-			</p>
 			{fonts &&
 				fonts.map(font => (
 					<FontCard

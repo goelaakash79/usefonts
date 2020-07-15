@@ -49,7 +49,7 @@ const Container = () => {
 	const handleClick = font => {
 		setSelectedFont(font);
 	};
-
+	const tempfonts = fonts && fonts.length >= 900 ? fonts.slice(0, 50) : fonts;
 	return (
 		<div className="flex gap-4">
 			<div className="w-4/12">
@@ -59,15 +59,17 @@ const Container = () => {
 						<Loader />
 					</div>
 				) : (
-					<FontList
-						fonts={
-							fonts && fonts.length >= 900
-								? fonts.slice(0, 50)
-								: fonts
-						}
-						allfonts={allfonts}
-						cardClick={handleClick}
-					/>
+					<>
+						<p className="capitalize font-sen font-bold text-gray-500 mb-2">
+							Total Fonts: {fonts && tempfonts.length} /{" "}
+							{allfonts && allfonts.length}
+						</p>
+						<FontList
+							fonts={tempfonts}
+							allfonts={allfonts}
+							cardClick={handleClick}
+						/>
+					</>
 				)}
 			</div>
 			<div className="w-1/12"></div>
