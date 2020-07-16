@@ -15,20 +15,12 @@ const Container = () => {
 		(async () => {
 			try {
 				const res = await fetchFonts();
-				// let i,
-				// 	j,
-				// 	temparray,
-				// 	chunk = 50;
-				// for (i = 0, j = res.length; i < j; i += chunk) {
-				// 	temparray = res.slice(i, i + chunk);
-				// 	setAllFonts(allfonts.push(temparray));
-				// }
 				setAllFonts(res);
 				setFonts(res);
 				setLoading(false);
 			} catch (err) {
 				setLoading(false);
-				console.log(err);
+				// console.log(err);
 			}
 		})();
 	}, []);

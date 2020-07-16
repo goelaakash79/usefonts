@@ -11,7 +11,7 @@ const Paragraph = styled.p`
 					families: [family]
 				},
 				loading: () => {
-					console.log("wait");
+					/* console.log("wait"); */
 				}
 			});
 		}};

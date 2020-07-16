@@ -253,7 +253,7 @@ const PreviewCard = ({ font }) => {
 					<div className="font-bold text-xl mb-2">
 						The Coldest Sunset
 					</div>
-					<p className="text-gray-700 text-base">
+					<p className="text-gray-700 text-sm">
 						Lorem ipsum dolor sit amet, consectetur adipisicing
 						elit. Voluptatibus quia, nulla! Maiores et perferendis
 						eaque, exercitationem praesentium nihil.

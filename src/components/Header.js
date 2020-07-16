@@ -1,4 +1,5 @@
 import React from "react";
+import { FeedbackForm } from "feedback-fish";
 
 const svg = (
 	<svg
@@ -30,10 +31,26 @@ const svg = (
 	</svg>
 );
 
+const FeedbackButton = props => (
+	<svg
+		height="20px"
+		className="inline-block text-blue-600"
+		{...props}
+		fill="currentColor"
+		viewBox="0 0 20 20"
+	>
+		<path
+			fillRule="evenodd"
+			d="M18 13V5a2 2 0 00-2-2H4a2 2 0 00-2 2v8a2 2 0 002 2h3l3 3 3-3h3a2 2 0 002-2zM5 7a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1zm1 3a1 1 0 100 2h3a1 1 0 100-2H6z"
+			clipRule="evenodd"
+		></path>
+	</svg>
+);
+
 const Header = () => {
 	return (
-		<h1 className="font-serif pt-8 md:text-4xl lg:text-5xl text-xl font-black text-blue-700 mb-4">
-			useFonts();{" "}
+		<h1 className="font-serif pt-8 md:text-4xl lg:text-5xl text-xl font-black text-blue-600 mb-4">
+			<i>useFonts</i>{" "}
 			<span className="absolute right-0 top-4 cursor-pointer bg-white px-6 py-2 border-b-4 border-gray-400 rounded-l-full text-gray-700 font-sen font-semibold text-sm">
 				<a
 					href="https://github.com/goelaakash79/font-preview"
@@ -61,7 +78,12 @@ const Header = () => {
 					className=""
 				>
 					@goelaakash79
-				</a>
+				</a>{" "}
+				|{" "}
+				<FeedbackForm
+					projectId="baeb2104de7b8b"
+					triggerComponent={FeedbackButton}
+				/>
 			</span>
 		</h1>
 	);

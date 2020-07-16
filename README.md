@@ -18,6 +18,8 @@
 
 ### 👻 [Preview](https://usefonts.netlify.app)
 
+<img src="https://i.imgur.com/LM4iRP1.png"/>
+
 ## Run on a local machine
 
 Simply go to the command line and run this command.
