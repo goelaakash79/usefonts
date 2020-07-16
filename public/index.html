@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="theme-color" content="#2B6CB0" />
   <meta name="description" content="Tool to find the perfect font for your next project." />
+  <meta name="keywords"
+    content="Google Fonts, fonts, design, font preview, font, developer, frontend dev, goelaakash79">
+  <meta name="author" content="Aakash Goel | https://twitter.com/goelaakash79">
   <link rel="apple-touch-icon" href="%PUBLIC_URL%/apple-touch-icon.png" />
   <!--
       manifest.json provides metadata used when your web app is installed on a
@@ -29,9 +32,18 @@
   heap.load("1190413813");
   </script>  -->
   <script type="text/javascript">
-  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
-  heap.load("3944439904");
+    window.heap = window.heap || [], heap.load = function (e, t) { window.heap.appid = e, window.heap.config = t = t || {}; var r = document.createElement("script"); r.type = "text/javascript", r.async = !0, r.src = "https://cdn.heapanalytics.com/js/heap-" + e + ".js"; var a = document.getElementsByTagName("script")[0]; a.parentNode.insertBefore(r, a); for (var n = function (e) { return function () { heap.push([e].concat(Array.prototype.slice.call(arguments, 0))) } }, p = ["addEventProperties", "addUserProperties", "clearEventProperties", "identify", "resetIdentity", "removeEventProperty", "setEventProperties", "track", "unsetEventProperty"], o = 0; o < p.length; o++)heap[p[o]] = n(p[o]) };
+    heap.load("3944439904");
   </script> <!-- production script -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172819092-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-172819092-1');
+  </script>
 </head>
 
 <body>
@@ -54,6 +66,9 @@
         document.getElementById('main-container').innerHTML = "<p>The tool is not compatible for the mobile devices. I am working on the best design for the mobile screens. 🚧 Till then hold your 🍺</p>"
       }
     };
+  </script>
+  <script>
+    heap.identify('unique_identifier');
   </script>
 </body>
 
