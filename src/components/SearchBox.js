@@ -1,22 +1,32 @@
-import React, { useState } from "react";
+import React, { useCallback } from "react";
+
+const debounce = (fn, delay) => {
+	let timeoutId;
+	return function (...args) {
+		clearInterval(timeoutId);
+		timeoutId = setTimeout(() => fn.apply(this, args), delay);
+	};
+};
 
 const SearchBox = ({ onSearch }) => {
-	const [text, setText] = useState("");
-	const handleKeyPress = event => {
-		if (event.key === "Enter" && String(text).length >= 2) {
-			onSearch(text);
-		}
+	const debounceCallback = useCallback(
+		debounce(value => {
+			onSearch(value);
+		}, 400),
+		[]
+	);
+
+	const handleChange = ({ target: { value } }) => {
+		debounceCallback(value);
 	};
 
 	return (
 		<input
+			name="text"
 			type="text"
 			placeholder="search your font here..."
 			className="border-blue-700 border border-b-4 w-full rounded-lg py-2 px-4 font-sen mb-6"
-			onChange={e => {
-				setText(e.target.value);
-			}}
-			onKeyPress={handleKeyPress}
+			onChange={handleChange}
 		/>
 	);
 };
