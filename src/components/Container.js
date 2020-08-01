@@ -35,6 +35,7 @@ const svg = (
 	</svg>
 );
 const Container = () => {
+	const [param, setParam] = useState("ALPHA");
 	const [fonts, setFonts] = useState([]);
 	const [allfonts, setAllFonts] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -44,7 +45,8 @@ const Container = () => {
 	useEffect(() => {
 		(async () => {
 			try {
-				const res = await fetchFonts();
+				setLoading(true);
+				const res = await fetchFonts(param);
 				setAllFonts(res);
 				setFonts(res);
 				setLoading(false);
@@ -52,11 +54,11 @@ const Container = () => {
 				setLoading(false);
 			}
 		})();
-	}, []);
+	}, [param]);
 
 	const handleSearch = async value => {
 		setLoading(true);
-		const res = await fetchFonts();
+		const res = await fetchFonts(param);
 		value = `${value}`.toLowerCase();
 
 		setFonts(
@@ -79,17 +81,55 @@ const Container = () => {
 	const tempfonts = fonts && fonts.length >= 900 ? fonts.slice(0, 50) : fonts;
 	return (
 		<>
-			<div className="flex md:flex-row flex-col w-full h-screen bg-colors-light">
-				<div className="md:w-5/12 w-full h-screen container md:pl-20 md:pr-8 lg:pl-32 lg:pr-16 px-5 mx-auto">
+			<div className="flex md:flex-row flex-col w-full bg-colors-light h-screen">
+				<div className="flex flex-col gap-4 md:w-5/12 w-full container md:pl-20 md:pr-8 lg:pl-32 lg:pr-16 px-5 mx-auto h-screen">
 					<Header />
 					<SearchBox onSearch={handleSearch} />
+					<div>
+						<p className="font-semibold text-colors-gray mb-2">
+							Sort by
+						</p>
+						<div className="flex gap-2 flex-wrap">
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() => setParam("ALPHA")}
+							>
+								ALPHA
+							</span>
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() => setParam("TRENDING")}
+							>
+								TRENDING
+							</span>
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() => setParam("DATE")}
+							>
+								DATE
+							</span>
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() => setParam("POPULARITY")}
+							>
+								POPULARITY
+							</span>
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() => setParam("STYLE")}
+							>
+								STYLE
+							</span>
+						</div>
+					</div>
+
 					{loading ? (
 						<div className="flex justify-center">
 							<Loader />
 						</div>
 					) : (
 						<>
-							<p className="font-semibold text-colors-gray mb-2">
+							<p className="font-semibold text-colors-gray -mb-2">
 								Showing {fonts && tempfonts.length} of{" "}
 								{allfonts && allfonts.length} fonts
 							</p>
@@ -100,8 +140,8 @@ const Container = () => {
 							/>
 						</>
 					)}
-					<div className="bg-colors-light lg:h-8 md:h-6 h-4"></div>
-					<div className="bg-colors-light cursor-pointer text-colors-orange font-semibold text-sm">
+
+					<div className="bg-colors-light cursor-pointer text-colors-orange font-semibold text-sm mb-4">
 						<a
 							href="https://github.com/goelaakash79/font-preview"
 							rel="noopener noreferrer"

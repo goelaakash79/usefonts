@@ -23,7 +23,7 @@ const UtilDiv = ({ font }) => {
 			<p className="text-xs font-bold text-colors-gray mb-4">ALERT</p>
 			<Div
 				family={(font && font.family) || "Sen"}
-				className="bg-colors-light border-l-4 border-colors-orange rounded-md sm:w-full lg:w-1/2 text-colors-dark px-4 py-3 shadow-xs focus:outline-none"
+				className="bg-colors-light border-l-4 border-colors-orange rounded-md w-full lg:w-1/2 text-colors-dark px-4 py-3 shadow-xs focus:outline-none"
 				role="alert"
 				contentEditable="true"
 				suppressContentEditableWarning={true}
@@ -50,7 +50,7 @@ const UtilDiv = ({ font }) => {
 			<div className="h-8"></div>
 			<p className="text-xs font-bold text-colors-gray mb-4">CARD</p>
 			<Div
-				className="max-w-sm rounded-lg overflow-hidden shadow-xs bg-colors-light focus:outline-none"
+				className="w-full lg:w-1/2 rounded-lg overflow-hidden shadow-xs bg-colors-light focus:outline-none"
 				family={(font && font.family) || "Sen"}
 				contentEditable="true"
 				suppressContentEditableWarning={true}

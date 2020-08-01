@@ -37,8 +37,8 @@ const Form = ({ font }) => {
 	return (
 		<>
 			<p className="text-xs font-bold text-colors-gray mb-4">INPUT</p>
-			<div className="flex flex-row">
-				<div className="flex flex-col w-1/2">
+			<div className="flex flex-col md:flex-row ">
+				<div className="flex flex-col w-full md:w-1/2">
 					<Label
 						family={(font && font.family) || "Sen"}
 						className="text-sm font-medium text-colors-gray mb-2"
@@ -53,7 +53,7 @@ const Form = ({ font }) => {
 						className="border-colors-orange bg-colors-light border-b-2 rounded-lg py-2 px-4 mr-4 focus:outline-none placeholder-colors-dark"
 					/>
 				</div>
-				<div className="flex flex-col w-1/2">
+				<div className="flex flex-col w-full md:w-1/2">
 					<br />
 					<Label
 						family={(font && font.family) || "Sen"}

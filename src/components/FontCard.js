@@ -22,7 +22,7 @@ const Paragraph = styled.p`
 const FontCard = ({ font, onClick }) => {
 	return (
 		<div
-			className="bg-colors-yellow rounded-lg mb-4 py-3 px-6 cursor-pointer border-b-4 border-transparent hover:border-colors-shadow hover:border-b-4 transition-all duration-200"
+			className="bg-colors-yellow rounded-lg mb-3 py-3 px-6 cursor-pointer border-b-4 border-transparent hover:border-colors-shadow hover:border-b-4 transition-all duration-200"
 			onClick={() => onClick(font)}
 		>
 			<h2 className="text-base text-blue-900 font-sen font-bold mb-1">

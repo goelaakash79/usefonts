@@ -12,7 +12,7 @@ const PreviewCard = ({ font, onClose }) => {
 		.split(" ")
 		.join("+");
 	return (
-		<div className="bg-colors-white overflow-y-scroll h-screen py-16 px-10">
+		<div className="bg-colors-white overflow-y-scroll h-screen py-12 px-10">
 			<span
 				onClick={() => {
 					onClose();

@@ -9,7 +9,7 @@ module.exports = {
 			sm: "640px",
 			md: "768px",
 			lg: "1024px",
-			xl: "1280px"
+			xl: "1366px"
 		},
 		colors: {
 			transparent: "transparent",
@@ -55,7 +55,10 @@ module.exports = {
 			"120": "30rem",
 			"128": "32rem",
 			"136": "34rem",
-			"144": "36rem"
+			"144": "36rem",
+			"152": "38rem",
+			"160": "40rem",
+			"200": "50rem"
 		},
 		backgroundColor: theme => theme("colors"),
 		backgroundOpacity: theme => theme("opacity"),
