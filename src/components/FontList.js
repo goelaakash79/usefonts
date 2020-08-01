@@ -2,6 +2,7 @@ import React from "react";
 import FontCard from "./FontCard";
 
 const FontList = ({ fonts, allfonts, cardClick }) => {
+	// const [preFont, setPreFont] = React.useState(null);
 	const handleClick = font => {
 		cardClick(font);
 	};

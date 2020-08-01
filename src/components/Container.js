@@ -38,6 +38,7 @@ const Container = () => {
 	const [fonts, setFonts] = useState([]);
 	const [allfonts, setAllFonts] = useState([]);
 	const [loading, setLoading] = useState(true);
+	const [mobileSheet, setMobileSheet] = useState(false);
 	const [selectedFont, setSelectedFont] = useState({});
 
 	useEffect(() => {
@@ -68,8 +69,13 @@ const Container = () => {
 
 	const handleClick = font => {
 		setSelectedFont(font);
+		setMobileSheet(true);
 	};
-	// bg-colors-light
+
+	const handleSheetClose = () => {
+		setMobileSheet(false);
+	};
+
 	const tempfonts = fonts && fonts.length >= 900 ? fonts.slice(0, 50) : fonts;
 	return (
 		<>
@@ -123,8 +129,15 @@ const Container = () => {
 						</a>
 					</div>
 				</div>
-				<div className="md:w-7/12 md:block md:relative absolute md:top-auto top-0 w-full hidden">
-					<PreviewCard font={selectedFont} />
+				<div
+					className={`md:w-7/12 md:block md:relative absolute md:top-auto top-0 w-full ${
+						mobileSheet ? "block" : "hidden"
+					}`}
+				>
+					<PreviewCard
+						font={selectedFont}
+						onClose={handleSheetClose}
+					/>
 				</div>
 			</div>
 		</>
