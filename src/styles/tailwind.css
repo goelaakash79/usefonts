@@ -5,7 +5,7 @@
 @import "tailwindcss/utilities";
 
 ::-webkit-scrollbar {
-	width: 4px;
+	width: 0px;
 }
 
 /* Track */
@@ -26,7 +26,7 @@
 }
 
 .loader {
-	border-top-color: #2a4365;
+	border-top-color: #fef6e4;
 	-webkit-animation: spinner 1.5s linear infinite;
 	animation: spinner 1.5s linear infinite;
 }

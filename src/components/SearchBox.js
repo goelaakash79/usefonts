@@ -22,10 +22,9 @@ const SearchBox = ({ onSearch }) => {
 
 	return (
 		<input
-			name="text"
 			type="text"
 			placeholder="search your font here..."
-			className="border-blue-700 border border-b-4 w-full rounded-lg py-2 px-4 font-sen mb-6"
+			className="border-colors-orange border border-b-4 w-full rounded-lg py-2 px-4 mb-6 focus:outline-none"
 			onChange={handleChange}
 		/>
 	);

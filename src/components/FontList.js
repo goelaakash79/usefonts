@@ -2,17 +2,11 @@ import React from "react";
 import FontCard from "./FontCard";
 
 const FontList = ({ fonts, allfonts, cardClick }) => {
-	// const handleScroll = () => {
-	// 	console.log(window.document.getElementById("scroll-pos").scrollHeight);
-	// };
 	const handleClick = font => {
 		cardClick(font);
 	};
 	return (
-		<div
-			className="overflow-y-scroll h-screen"
-			//  onScroll={handleScroll}
-		>
+		<div className="overflow-y-scroll md:h-128 h-112">
 			{fonts &&
 				fonts.map(font => (
 					<FontCard
@@ -21,7 +15,6 @@ const FontList = ({ fonts, allfonts, cardClick }) => {
 						onClick={handleClick}
 					/>
 				))}
-			<div className="h-56" id="scroll-pos"></div>
 		</div>
 	);
 };

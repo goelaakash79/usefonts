@@ -22,10 +22,10 @@ const Paragraph = styled.p`
 const FontCard = ({ font, onClick }) => {
 	return (
 		<div
-			className="bg-white rounded-lg mb-4 py-3 px-4 cursor-pointer hover:bg-gray-200 transition-all duration-200"
+			className="bg-colors-yellow rounded-lg mb-4 py-3 px-6 cursor-pointer border-b-4 border-transparent hover:border-colors-shadow hover:border-b-4 transition-all duration-200"
 			onClick={() => onClick(font)}
 		>
-			<h2 className="text-base text-blue-900 font-sen font-bold mb-2">
+			<h2 className="text-base text-blue-900 font-sen font-bold mb-1">
 				{font && font.family}
 				<span className="text-xs px-2 rounded py-px bg-blue-400 font-medium text-white float-right">
 					{font && font.category}

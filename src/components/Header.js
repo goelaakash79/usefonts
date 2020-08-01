@@ -49,9 +49,9 @@ const FeedbackButton = props => (
 
 const Header = () => {
 	return (
-		<h1 className="font-serif pt-8 md:text-4xl lg:text-5xl text-xl font-black text-blue-600 mb-4">
-			<i>useFonts</i>{" "}
-			<span className="absolute right-0 top-4 cursor-pointer bg-white px-6 py-2 border-b-4 border-gray-400 rounded-l-full text-gray-700 font-sen font-semibold text-sm">
+		<h1 className="font-serif pt-8 md:text-4xl text-3xl font-black text-colors-orange mb-4 italic">
+			usefonts{" "}
+			{/* <span className="absolute right-0 top-4 cursor-pointer bg-white px-6 py-2 border-b-4 border-gray-400 rounded-l-full text-gray-700 font-sen font-semibold text-sm">
 				<a
 					href="https://github.com/goelaakash79/font-preview"
 					rel="noopener noreferrer"
@@ -84,7 +84,7 @@ const Header = () => {
 					projectId="baeb2104de7b8b"
 					triggerComponent={FeedbackButton}
 				/>
-			</span>
+			</span> */}
 		</h1>
 	);
 };
