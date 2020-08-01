@@ -49,19 +49,19 @@ const Form = ({ font }) => {
 					<Input
 						family={(font && font.family) || "Sen"}
 						type="text"
-						placeholder="john.doe@noobs.com"
-						className="border-colors-orange bg-colors-light border-b-2 rounded-lg py-2 px-4 mr-4 focus:outline-none placeholder-colors-dark"
+						placeholder="steve.rogers@avengers.com"
+						className="border-colors-orange bg-colors-light border-b-2 rounded-lg py-2 px-4 mr-4 focus:outline-none placeholder-colors-gray"
 					/>
 				</div>
 				<div className="flex flex-col w-full md:w-1/2">
 					<br />
 					<Label
 						family={(font && font.family) || "Sen"}
-						className="md:w-2/3 block font-medium"
+						className="block font-medium"
 					>
 						<input className="mr-2 leading-tight" type="checkbox" />
-						<span className="text-sm text-colors-gray">
-							Send me your newsletter!
+						<span className="text-base text-colors-gray">
+							I agree to all terms and conditions
 						</span>
 					</Label>
 				</div>

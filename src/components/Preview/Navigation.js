@@ -24,16 +24,14 @@ const Navigation = ({ font }) => {
 				NAVIGATION
 			</p>
 			<Nav family={(font && font.family) || "Sen"}>
-				<nav class="flex items-center justify-between flex-wrap bg-colors-orange py-6 px-10 -mx-10">
-					<div class="flex items-center flex-shrink-0 text-colors-white mr-6">
-						<span class="font-semibold text-xl tracking-tight">
-							{"🎨"} usefonts
-						</span>
+				<nav className="flex items-center justify-between flex-wrap bg-colors-orange py-6 px-10 -mx-10">
+					<div className="flex items-center flex-shrink-0 text-colors-white mr-6">
+						<span className="font-bold text-2xl">usefonts</span>
 					</div>
-					<div class="block lg:hidden">
-						<button class="flex items-center px-3 py-2 border rounded text-colors-white border-teal-400 hover:text-white hover:border-white">
+					<div className="block lg:hidden">
+						<button className="flex items-center px-3 py-2 border rounded text-colors-white border-teal-400 hover:text-white hover:border-white">
 							<svg
-								class="fill-current h-3 w-3"
+								className="fill-current h-3 w-3"
 								viewBox="0 0 20 20"
 								xmlns="http://www.w3.org/2000/svg"
 							>
@@ -42,31 +40,37 @@ const Navigation = ({ font }) => {
 							</svg>
 						</button>
 					</div>
-					<div class="w-full md:block flex-grow lg:flex lg:items-center lg:w-auto hidden">
-						<div class="text-sm lg:flex-grow">
+					<div className="w-full md:block flex-grow lg:flex lg:items-center lg:w-auto hidden">
+						<div className="text-sm lg:flex-grow">
 							<a
-								href="#responsive-header"
-								class="block mt-4 lg:inline-block lg:mt-0 text-colors-white hover:text-white mr-4"
+								href="https://tailwindcss.com/"
+								className="block mt-4 lg:inline-block lg:mt-0 text-colors-white hover:text-white mr-4"
 							>
 								Home
 							</a>
 							<a
-								href="#responsive-header"
-								class="block mt-4 lg:inline-block lg:mt-0 text-colors-white hover:text-white mr-4"
+								href="https://refactoringui.com/"
+								className="block mt-4 lg:inline-block lg:mt-0 text-colors-white hover:text-white mr-4"
 							>
 								About
 							</a>
 							<a
-								href="#responsive-header"
-								class="block mt-4 lg:inline-block lg:mt-0 text-colors-white hover:text-white"
+								href="https://dsckiet.com/"
+								className="block mt-4 lg:inline-block lg:mt-0 text-colors-white hover:text-white mr-4"
 							>
 								Team
+							</a>
+							<a
+								href="https://twitter.com/goelaakash79"
+								className="block mt-4 lg:inline-block lg:mt-0 text-colors-white hover:text-white"
+							>
+								Contact
 							</a>
 						</div>
 						<div>
 							<a
-								href="https:/"
-								class="inline-block text-sm px-4 py-2 leading-none border rounded text-colors-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
+								href="https://github.com/goelaakash79"
+								className="inline-block text-sm px-4 py-2 leading-none border rounded text-colors-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
 							>
 								Become a member
 							</a>

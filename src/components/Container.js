@@ -36,6 +36,7 @@ const svg = (
 );
 const Container = () => {
 	const [param, setParam] = useState("ALPHA");
+	// const [category, setCategory] = useState(null);
 	const [fonts, setFonts] = useState([]);
 	const [allfonts, setAllFonts] = useState([]);
 	const [loading, setLoading] = useState(true);
@@ -56,13 +57,20 @@ const Container = () => {
 		})();
 	}, [param]);
 
+	const handleCategoryChange = category => {
+		setLoading(true);
+		// setCategory(category);
+		setFonts(allfonts.filter(font => String(font.category) === category));
+		setLoading(false);
+	};
+
 	const handleSearch = async value => {
 		setLoading(true);
-		const res = await fetchFonts(param);
+		// const res = await fetchFonts(param);
 		value = `${value}`.toLowerCase();
 
 		setFonts(
-			res.filter(font =>
+			allfonts.filter(font =>
 				String(font.family).toLowerCase().includes(value)
 			)
 		);
@@ -78,7 +86,8 @@ const Container = () => {
 		setMobileSheet(false);
 	};
 
-	const tempfonts = fonts && fonts.length >= 900 ? fonts.slice(0, 50) : fonts;
+	const tempfonts =
+		fonts && fonts.length >= 100 ? fonts.slice(0, 100) : fonts;
 	return (
 		<>
 			<div className="flex md:flex-row flex-col w-full bg-colors-light h-screen">
@@ -86,7 +95,7 @@ const Container = () => {
 					<Header />
 					<SearchBox onSearch={handleSearch} />
 					<div>
-						<p className="font-semibold text-colors-gray mb-2">
+						<p className="font-semibold text-sm text-colors-gray mb-2">
 							Sort by
 						</p>
 						<div className="flex gap-2 flex-wrap">
@@ -94,31 +103,74 @@ const Container = () => {
 								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
 								onClick={() => setParam("ALPHA")}
 							>
-								ALPHA
+								A-Z
 							</span>
 							<span
 								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
 								onClick={() => setParam("TRENDING")}
 							>
-								TRENDING
+								Trending
 							</span>
-							<span
+							{/* <span
 								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
 								onClick={() => setParam("DATE")}
 							>
 								DATE
-							</span>
+							</span> */}
 							<span
 								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
 								onClick={() => setParam("POPULARITY")}
 							>
-								POPULARITY
+								Popularity
 							</span>
 							<span
 								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
 								onClick={() => setParam("STYLE")}
 							>
-								STYLE
+								Style
+							</span>
+						</div>
+					</div>
+					<div>
+						<p className="font-semibold text-sm text-colors-gray mb-2">
+							Filter by
+						</p>
+						<div className="flex gap-2 flex-wrap">
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() =>
+									handleCategoryChange("sans-serif")
+								}
+							>
+								sans-serif
+							</span>
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() => handleCategoryChange("serif")}
+							>
+								serif
+							</span>
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() => handleCategoryChange("display")}
+							>
+								display
+							</span>
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() =>
+									handleCategoryChange("monospace")
+								}
+							>
+								monospace
+							</span>
+							<span
+								className="inline-block bg-colors-yellow rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer"
+								onClick={() =>
+									handleCategoryChange("handwriting")
+								}
+							>
+								handwriting
 							</span>
 						</div>
 					</div>
@@ -129,7 +181,7 @@ const Container = () => {
 						</div>
 					) : (
 						<>
-							<p className="font-semibold text-colors-gray -mb-2">
+							<p className="font-semibold text-sm text-colors-gray -mb-2">
 								Showing {fonts && tempfonts.length} of{" "}
 								{allfonts && allfonts.length} fonts
 							</p>
@@ -141,7 +193,7 @@ const Container = () => {
 						</>
 					)}
 
-					<div className="bg-colors-light cursor-pointer text-colors-orange font-semibold text-sm mb-4">
+					<div className="bg-colors-light cursor-pointer text-colors-dark font-semibold text-sm mb-4">
 						<a
 							href="https://github.com/goelaakash79/font-preview"
 							rel="noopener noreferrer"
@@ -150,7 +202,7 @@ const Container = () => {
 							give it a{" "}
 							<svg
 								fill="currentColor"
-								className="inline-block text-blue-600"
+								className="inline-block text-colors-yellow"
 								viewBox="0 0 20 20"
 								height="20px"
 								width="20px"

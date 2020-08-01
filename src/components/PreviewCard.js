@@ -2,7 +2,7 @@ import React from "react";
 
 import TextUtil from "./Preview/Text";
 import Buttons from "./Preview/Buttons";
-import Tags from "./Preview/Tags";
+// import Tags from "./Preview/Tags";
 import UtilDiv from "./Preview/UtilDiv";
 import Form from "./Preview/Form";
 import Navigation from "./Preview/Navigation";
@@ -54,10 +54,9 @@ const PreviewCard = ({ font, onClose }) => {
 			) : null}
 			<Navigation font={font} />
 			<TextUtil font={font} />
-			<Buttons font={font} />
 			<Form font={font} />
+			<Buttons font={font} />
 			<UtilDiv font={font} />
-			<Tags font={font} />
 		</div>
 	);
 };
