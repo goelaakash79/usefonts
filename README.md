@@ -3,10 +3,10 @@
   useFonts(🚀);
   </a> </h1>
 <p  align="center">
-  <a href="https://github.com/goelaakash79/font-preview#readme">
+  <a href="https://github.com/goelaakash79/usefonts#readme">
     <img alt="Documentation" src="https://img.shields.io/badge/Documentation-YES-blue/?style=for-the-badge&logo=github" target="_blank" />
   </a>
-  <a href="https://github.com/goelaakash79/font-preview/graphs/commit-activity">
+  <a href="https://github.com/goelaakash79/usefonts/graphs/commit-activity">
     <img alt="Maintenance" src="https://img.shields.io/badge/Maintained-YES-blue/?style=for-the-badge&logo=github" target="_blank" />
   </a>
   <a href="https://twitter.com/goelaakash79">
@@ -19,15 +19,15 @@
 
 ### 👻 [Preview](https://usefonts.netlify.app)
 
-<img src="https://i.imgur.com/LM4iRP1.png"/>
+<img src="https://i.imgur.com/GkEDRwk.gif"/>
 
 ## Run on a local machine
 
 Simply go to the command line and run this command.
 
 ```sh
-git clone https://github.com/goelaakash79/font-preview
-cd font-preview
+git clone https://github.com/goelaakash79/usefonts
+cd usefonts
 yarn add
 yarn start
 ```
@@ -46,4 +46,4 @@ Give a ⭐️ if this project helped you!
 ## 📝 License
 
 Copyright © 2020 [Aakash Goel](https://github.com/goelaakash79).<br />
-This project is [MIT](https://github.com/goelaakash79/font-preview/blob/master/LICENSE) licensed.
+This project is [MIT](https://github.com/goelaakash79/usefonts/blob/master/LICENSE) licensed.

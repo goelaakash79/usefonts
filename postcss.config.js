@@ -7,6 +7,7 @@ module.exports = {
 		require("@fullhuman/postcss-purgecss")({
 			content: [
 				"./src/components/*.js",
+				"./src/components/Preview/*.js",
 				"./public/index.html",
 				"./src/App.js"
 			],

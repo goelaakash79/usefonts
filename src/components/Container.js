@@ -66,11 +66,11 @@ const Container = () => {
 
 	const handleSearch = async value => {
 		setLoading(true);
-		// const res = await fetchFonts(param);
+		const res = await fetchFonts(param);
 		value = `${value}`.toLowerCase();
 
 		setFonts(
-			allfonts.filter(font =>
+			res.filter(font =>
 				String(font.family).toLowerCase().includes(value)
 			)
 		);
