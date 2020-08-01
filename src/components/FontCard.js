@@ -27,7 +27,7 @@ const FontCard = ({ font, onClick }) => {
 		>
 			<h2 className="text-base text-blue-900 font-sen font-bold mb-1">
 				{font && font.family}
-				<span className="text-xs px-2 rounded py-px bg-blue-400 font-medium text-white float-right">
+				<span className="text-xs px-2 rounded py-px bg-colors-light font-medium text-white float-right">
 					{font && font.category}
 				</span>
 			</h2>

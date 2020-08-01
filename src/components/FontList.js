@@ -6,7 +6,7 @@ const FontList = ({ fonts, allfonts, cardClick }) => {
 		cardClick(font);
 	};
 	return (
-		<div className="overflow-y-scroll md:h-128 h-112">
+		<div className="overflow-y-scroll sm:h-128 h-screen rounded-lg">
 			{fonts &&
 				fonts.map(font => (
 					<FontCard
