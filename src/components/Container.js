@@ -104,7 +104,7 @@ const Container = () => {
 						</p>
 						<div className="flex flex-wrap gap-2">
 							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
 									param === "ALPHA"
 										? "bg-colors-orange"
 										: "bg-colors-yellow"
@@ -114,7 +114,7 @@ const Container = () => {
 								A-Z
 							</span>
 							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
 									param === "TRENDING"
 										? "bg-colors-orange"
 										: "bg-colors-yellow"
@@ -124,13 +124,13 @@ const Container = () => {
 								Trending
 							</span>
 							{/* <span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${param==="DATE" ? "bg-colors-orange":"bg-colors-yellow"}`}
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${param==="DATE" ? "bg-colors-orange":"bg-colors-yellow"}hover:bg-colors-shadow transition-all duration-200 `}
 								onClick={() => setParam("DATE")}
 							>
 								DATE
 							</span> */}
 							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
 									param === "POPULARITY"
 										? "bg-colors-orange"
 										: "bg-colors-yellow"
@@ -140,7 +140,7 @@ const Container = () => {
 								Popularity
 							</span>
 							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black cursor-pointer ${
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
 									param === "STYLE"
 										? "bg-colors-orange"
 										: "bg-colors-yellow"
@@ -157,7 +157,7 @@ const Container = () => {
 						</p>
 						<div className="flex gap-2 flex-wrap">
 							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
 									category === "sans-serif"
 										? "bg-colors-orange"
 										: "bg-colors-yellow"
@@ -169,7 +169,7 @@ const Container = () => {
 								sans-serif
 							</span>
 							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
 									category === "serif"
 										? "bg-colors-orange"
 										: "bg-colors-yellow"
@@ -179,7 +179,7 @@ const Container = () => {
 								serif
 							</span>
 							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
 									category === "display"
 										? "bg-colors-orange"
 										: "bg-colors-yellow"
@@ -189,7 +189,7 @@ const Container = () => {
 								display
 							</span>
 							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
 									category === "monospace"
 										? "bg-colors-orange"
 										: "bg-colors-yellow"
@@ -201,7 +201,7 @@ const Container = () => {
 								monospace
 							</span>
 							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black cursor-pointer ${
+								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
 									category === "handwriting"
 										? "bg-colors-orange"
 										: "bg-colors-yellow"
@@ -264,8 +264,10 @@ const Container = () => {
 					</div>
 				</div>
 				<div
-					className={`md:w-7/12 md:block md:relative absolute md:top-auto top-0 w-full ${
-						mobileSheet ? "block" : "hidden"
+					className={`transform md:w-7/12 md:block md:relative absolute md:top-auto top-0 w-full ease-linear transition-all duration-300 ${
+						mobileSheet
+							? "block translate-x-0"
+							: "hidden -translate-x-full'"
 					}`}
 				>
 					<PreviewCard

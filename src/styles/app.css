@@ -504,6 +504,12 @@ img {
   background-color: rgba(45, 55, 72, var(--bg-opacity));
 }
 
+.hover\:bg-colors-shadow:hover{
+  --bg-opacity: 1;
+  background-color: #BA9D55;
+  background-color: rgba(186, 157, 85, var(--bg-opacity));
+}
+
 .border-transparent{
   border-color: transparent;
 }
@@ -752,10 +758,6 @@ img {
   margin-bottom: 2rem;
 }
 
-.-mb-2{
-  margin-bottom: -0.5rem;
-}
-
 .focus\:outline-none:focus{
   outline: 0;
 }
@@ -942,6 +944,25 @@ img {
   gap: 1rem;
 }
 
+.transform{
+  --transform-translate-x: 0;
+  --transform-translate-y: 0;
+  --transform-rotate: 0;
+  --transform-skew-x: 0;
+  --transform-skew-y: 0;
+  --transform-scale-x: 1;
+  --transform-scale-y: 1;
+  transform: translateX(var(--transform-translate-x)) translateY(var(--transform-translate-y)) rotate(var(--transform-rotate)) skewX(var(--transform-skew-x)) skewY(var(--transform-skew-y)) scaleX(var(--transform-scale-x)) scaleY(var(--transform-scale-y));
+}
+
+.translate-x-0{
+  --transform-translate-x: 0;
+}
+
+.-translate-x-full{
+  --transform-translate-x: -100%;
+}
+
 .transition-all{
   transition-property: all;
 }
@@ -952,6 +973,10 @@ img {
 
 .duration-200{
   transition-duration: 200ms;
+}
+
+.duration-300{
+  transition-duration: 300ms;
 }
 
 ::-webkit-scrollbar {
