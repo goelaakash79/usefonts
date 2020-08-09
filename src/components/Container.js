@@ -259,7 +259,7 @@ const Container = () => {
 							rel="noopener noreferrer"
 							target="_blank"
 						>
-							developed by @goelaakash79
+							created by @goelaakash79
 						</a>
 					</div>
 				</div>
