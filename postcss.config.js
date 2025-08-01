@@ -1,18 +1,8 @@
-const tailwindcss = require("tailwindcss");
+/** @type {import('postcss-load-config').Config} */
+const config = {
+  plugins: {
+    '@tailwindcss/postcss': {},
+  },
+}
 
-module.exports = {
-	plugins: [
-		tailwindcss("./tailwind.config.js"),
-		require("autoprefixer"),
-		require("@fullhuman/postcss-purgecss")({
-			content: [
-				"./src/components/*.js",
-				"./src/components/Preview/*.js",
-				"./public/index.html",
-				"./src/App.js"
-			],
-			defaultExtractor: content =>
-				content.match(/[A-Za-z0-9-_:/]+/g) || []
-		})
-	]
-};
+module.exports = config

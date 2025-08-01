@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useMemo } from "react";
 
 const debounce = (fn, delay) => {
 	let timeoutId;
@@ -9,11 +9,11 @@ const debounce = (fn, delay) => {
 };
 
 const SearchBox = ({ onSearch }) => {
-	const debounceCallback = useCallback(
-		debounce(value => {
+	const debounceCallback = useMemo(
+		() => debounce(value => {
 			onSearch(value);
 		}, 400),
-		[]
+		[onSearch]
 	);
 
 	const handleChange = ({ target: { value } }) => {
@@ -24,7 +24,7 @@ const SearchBox = ({ onSearch }) => {
 		<input
 			type="text"
 			placeholder="search your font here..."
-			className="border-colors-orange border border-b-4 w-full rounded-lg py-2 px-4 focus:outline-none"
+			className="border-orange border border-b-4 w-full rounded-lg py-2 px-4 focus:outline-none"
 			onChange={handleChange}
 		/>
 	);

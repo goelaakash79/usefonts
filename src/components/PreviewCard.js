@@ -12,7 +12,7 @@ const PreviewCard = ({ font, onClose }) => {
 		.split(" ")
 		.join("+");
 	return (
-		<div className="bg-colors-white overflow-y-scroll h-screen py-12 px-10">
+		<div className="bg-white overflow-y-scroll h-screen py-12 px-10">
 			<span
 				onClick={() => {
 					onClose();
@@ -29,11 +29,11 @@ const PreviewCard = ({ font, onClose }) => {
 			</span>
 			{Object.keys(font).length > 0 ? (
 				<>
-					<div className="text-colors-gray">
-						<p className="font-bold text-2xl text-colors-black">
+					<div className="text-gray">
+						<p className="font-bold text-2xl text-black">
 							{font.family}{" "}
 						</p>
-						<span className="text-sm px-2 mr-4 rounded py-px bg-colors-yellow font-medium text-colors-black">
+						<span className="text-sm px-2 mr-4 rounded py-px bg-yellow font-medium text-black">
 							{font.category}
 						</span>{" "}
 						<a
@@ -44,7 +44,7 @@ const PreviewCard = ({ font, onClose }) => {
 								)}?preview.text=${previewText}&preview.text_type=custom`}
 							rel="noopener noreferrer"
 							target="_blank"
-							className="text-colors-dark underline text-sm"
+							className="text-dark underline text-sm"
 						>
 							Go to Google fonts
 						</a>

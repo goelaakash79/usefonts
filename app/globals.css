@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+:root {
+	--background: #FEF6E4;
+	--foreground: #2D3748;
+}
+
+@theme inline {
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--font-sans: var(--font-inter);
+}
+
+@theme {
+	--color-light: #FEF6E4;
+	--color-yellow: #E9C46A;
+	--color-shadow: #BA9D55;
+	--color-orange: #E76F51;
+	--color-gray: #707070;
+	--color-dark: #2D3748;
+	--ease-in-gentle: cubic-bezier(0.18, 0.89, 0.32, 1.27);
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--background: #FEF6E4;
+		--foreground: #2D3748;
+	}
+}
+
+body {
+	background: var(--background);
+	color: var(--foreground);
+	font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+/* Custom scrollbar styles */
+::-webkit-scrollbar {
+	width: 0px;
+}
+
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+	background: #d5d5d5;
+	border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #707070;
+}
+
+/* Custom loader animation */
+.loader {
+	border-top-color: #fef6e4;
+	-webkit-animation: spinner 1.5s linear infinite;
+	animation: spinner 1.5s linear infinite;
+}
+
+@-webkit-keyframes spinner {
+	0% {
+		-webkit-transform: rotate(0deg);
+	}
+
+	100% {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@keyframes spinner {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}

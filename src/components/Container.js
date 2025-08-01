@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect } from "react";
 import FontList from "./FontList";
 import PreviewCard from "./PreviewCard";
@@ -90,7 +92,7 @@ const Container = () => {
 		fonts && fonts.length >= 100 ? fonts.slice(0, 100) : fonts;
 	return (
 		<>
-			<div className="flex md:flex-row flex-col w-full bg-colors-light h-screen">
+			<div className="flex md:flex-row flex-col w-full bg-light h-screen">
 				<div className="flex flex-col md:w-5/12 w-full container md:pl-20 md:pr-8 lg:pl-32 lg:pr-16 px-5 mx-auto h-screen">
 					<Header />
 					<div className="mb-4" />
@@ -98,120 +100,61 @@ const Container = () => {
 					<SearchBox onSearch={handleSearch} />
 					<div className="mb-4" />
 
-					<div className="mb-4">
-						<p className="font-semibold text-sm text-colors-gray mb-2">
-							Sort by
-						</p>
-						<div className="flex flex-wrap gap-2">
-							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
-									param === "ALPHA"
-										? "bg-colors-orange"
-										: "bg-colors-yellow"
-								}`}
-								onClick={() => setParam("ALPHA")}
-							>
-								A-Z
-							</span>
-							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
-									param === "TRENDING"
-										? "bg-colors-orange"
-										: "bg-colors-yellow"
-								}`}
-								onClick={() => setParam("TRENDING")}
-							>
-								Trending
-							</span>
-							{/* <span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer ${param==="DATE" ? "bg-colors-orange":"bg-colors-yellow"}hover:bg-colors-shadow transition-all duration-200 `}
-								onClick={() => setParam("DATE")}
-							>
-								DATE
-							</span> */}
-							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
-									param === "POPULARITY"
-										? "bg-colors-orange"
-										: "bg-colors-yellow"
-								}`}
-								onClick={() => setParam("POPULARITY")}
-							>
-								Popularity
-							</span>
-							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
-									param === "STYLE"
-										? "bg-colors-orange"
-										: "bg-colors-yellow"
-								}`}
-								onClick={() => setParam("STYLE")}
-							>
-								Style
-							</span>
-						</div>
-					</div>
-					<div className="mb-4">
-						<p className="font-semibold text-sm text-colors-gray mb-2">
-							Filter by
-						</p>
-						<div className="flex gap-2 flex-wrap">
-							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
-									category === "sans-serif"
-										? "bg-colors-orange"
-										: "bg-colors-yellow"
-								}`}
-								onClick={() =>
-									handleCategoryChange("sans-serif")
-								}
-							>
-								sans-serif
-							</span>
-							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
-									category === "serif"
-										? "bg-colors-orange"
-										: "bg-colors-yellow"
-								}`}
-								onClick={() => handleCategoryChange("serif")}
-							>
-								serif
-							</span>
-							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
-									category === "display"
-										? "bg-colors-orange"
-										: "bg-colors-yellow"
-								}`}
-								onClick={() => handleCategoryChange("display")}
-							>
-								display
-							</span>
-							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black mr-2 cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
-									category === "monospace"
-										? "bg-colors-orange"
-										: "bg-colors-yellow"
-								}`}
-								onClick={() =>
-									handleCategoryChange("monospace")
-								}
-							>
-								monospace
-							</span>
-							<span
-								className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-colors-black cursor-pointer hover:bg-colors-shadow transition-all duration-200 ${
-									category === "handwriting"
-										? "bg-colors-orange"
-										: "bg-colors-yellow"
-								}`}
-								onClick={() =>
-									handleCategoryChange("handwriting")
-								}
-							>
-								handwriting
-							</span>
+					<div className="flex flex-col">
+						<div className="flex items-center justify-between mb-4">
+							<div className="flex items-center">
+								<span
+									className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-black mr-2 cursor-pointer hover:bg-shadow transition-all duration-200 ${category === "serif"
+											? "bg-orange"
+											: "bg-yellow"
+										}`}
+									onClick={() => handleCategoryChange("serif")}
+								>
+									serif
+								</span>
+								<span
+									className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-black mr-2 cursor-pointer hover:bg-shadow transition-all duration-200 ${category === "sans-serif"
+											? "bg-orange"
+											: "bg-yellow"
+										}`}
+									onClick={() =>
+										handleCategoryChange("sans-serif")
+									}
+								>
+									sans-serif
+								</span>
+								<span
+									className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-black mr-2 cursor-pointer hover:bg-shadow transition-all duration-200 ${category === "display"
+											? "bg-orange"
+											: "bg-yellow"
+										}`}
+									onClick={() => handleCategoryChange("display")}
+								>
+									display
+								</span>
+								<span
+									className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-black mr-2 cursor-pointer hover:bg-shadow transition-all duration-200 ${category === "monospace"
+											? "bg-orange"
+											: "bg-yellow"
+										}`}
+									onClick={() =>
+										handleCategoryChange("monospace")
+									}
+								>
+									monospace
+								</span>
+								<span
+									className={`inline-block rounded-lg px-3 py-1 text-xs font-medium text-black cursor-pointer hover:bg-shadow transition-all duration-200 ${category === "handwriting"
+											? "bg-orange"
+											: "bg-yellow"
+										}`}
+									onClick={() =>
+										handleCategoryChange("handwriting")
+									}
+								>
+									handwriting
+								</span>
+							</div>
 						</div>
 					</div>
 
@@ -221,7 +164,7 @@ const Container = () => {
 						</div>
 					) : (
 						<>
-							<p className="font-semibold text-sm text-colors-gray mb-2">
+							<p className="font-semibold text-sm text-gray mb-2">
 								Showing {fonts && tempfonts.length} of{" "}
 								{allfonts && allfonts.length} fonts
 							</p>
@@ -235,7 +178,7 @@ const Container = () => {
 
 					<div className="mb-4"></div>
 
-					<div className="bg-colors-light cursor-pointer text-colors-dark font-semibold text-sm mb-4">
+					<div className="bg-light cursor-pointer text-dark font-semibold text-sm mb-4">
 						<a
 							href="https://github.com/goelaakash79/font-preview"
 							rel="noopener noreferrer"
@@ -244,12 +187,12 @@ const Container = () => {
 							give it a{" "}
 							<svg
 								fill="currentColor"
-								className="inline-block text-colors-yellow"
+								className="inline-block text-yellow"
 								viewBox="0 0 20 20"
 								height="20px"
 								width="20px"
 							>
-								<path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+								<path d="M9.049 2.927c.6-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
 							</svg>{" "}
 							on {svg}
 						</a>{" "}
@@ -264,11 +207,10 @@ const Container = () => {
 					</div>
 				</div>
 				<div
-					className={`transform md:w-7/12 md:block md:relative absolute md:top-auto top-0 w-full ease-linear transition-all duration-300 ${
-						mobileSheet
+					className={`transform md:w-7/12 md:block md:relative absolute md:top-auto top-0 w-full ease-linear transition-all duration-300 ${mobileSheet
 							? "block translate-x-0"
 							: "hidden -translate-x-full'"
-					}`}
+						}`}
 				>
 					<PreviewCard
 						font={selectedFont}
