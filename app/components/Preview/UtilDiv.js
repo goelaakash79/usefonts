@@ -1,7 +1,7 @@
 'use client'
 
-import React from "react";
-import { useFontLoader, createFontPreviewStyle } from "../../utils/fontLoader";
+import React, { useState } from "react";
+import { useFontLoader, createFontPreviewStyle } from "../../../lib/font-loader";
 
 const UtilDiv = ({ font }) => {
 	const { isLoaded, isLoading } = useFontLoader(font?.family);

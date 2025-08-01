@@ -6,6 +6,7 @@ import Buttons from "./Preview/Buttons";
 import UtilDiv from "./Preview/UtilDiv";
 import Form from "./Preview/Form";
 import Navigation from "./Preview/Navigation";
+import ShadcnExample from "./ShadcnExample";
 
 const PreviewCard = ({ font, onClose }) => {
 	const previewText = "A ship in the harbor is safe, but that is not what a ship is for."
@@ -57,6 +58,7 @@ const PreviewCard = ({ font, onClose }) => {
 			<Form font={font} />
 			<Buttons font={font} />
 			<UtilDiv font={font} />
+			<ShadcnExample font={font} />
 		</div>
 	);
 };

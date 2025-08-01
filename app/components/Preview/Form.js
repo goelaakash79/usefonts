@@ -1,7 +1,7 @@
 'use client'
 
-import React from "react";
-import { useFontLoader, createFontPreviewStyle } from "../../utils/fontLoader";
+import React, { useState } from "react";
+import { useFontLoader, createFontPreviewStyle } from "../../../lib/font-loader";
 
 const Form = ({ font }) => {
 	const { isLoaded, isLoading } = useFontLoader(font?.family);

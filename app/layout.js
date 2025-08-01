@@ -1,14 +1,19 @@
-import { Inter } from "next/font/google";
+import { Geist, Space_Mono } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  display: 'swap',
+});
+
+const spaceMono = Space_Mono({
+  variable: "--font-space-mono",
+  weight: ["400", "700"],
+  subsets: ["latin"]
 });
 
 export const metadata = {
-  title: 'usefonts',
+  title: 'type',
   description: 'Tool to find the perfect font for your next project.',
   keywords: 'Google Fonts, fonts, design, font preview, font, developer, frontend dev, goelaakash79',
   author: 'Aakash Goel | https://twitter.com/goelaakash79',
@@ -24,9 +29,9 @@ export default function RootLayout({ children }) {
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
         <link rel="manifest" href="/manifest.json" />
       </head>
-      <body className={`${inter.variable} antialiased`}>
+      <body className={`${geistSans.variable} ${spaceMono.variable} antialiased`}>
         {children}
       </body>
     </html>
   )
-} 
+}
