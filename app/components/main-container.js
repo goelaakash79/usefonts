@@ -138,7 +138,7 @@ const MainContainer = () => {
 					currentSort={param}
 				/>
 				<div
-					className={`transform md:w-7/12 md:block md:relative absolute md:top-auto top-0 w-full ease-linear transition-all duration-300 ${mobileSheet
+					className={`transform md:w-7/12 lg:w-2/3 md:block md:relative absolute md:top-auto top-0 w-full ease-linear transition-all duration-300 ${mobileSheet
 						? "block translate-x-0"
 						: "hidden -translate-x-full'"
 						}`}
