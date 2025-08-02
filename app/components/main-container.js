@@ -19,6 +19,7 @@ import PreviewCard from "./preview-panel";
 import { fetchFonts } from "../../lib/service";
 import fontPreloaderV2 from "../../lib/font-preloader-v2";
 import SideBar from "./side-bar";
+import { getFavorites } from "../../lib/favorites";
 
 const MainContainer = () => {
 	// State for sort parameter (ALPHA, POPULARITY, DATE, STYLE, TRENDING)
@@ -75,8 +76,15 @@ const MainContainer = () => {
 			const res = await fetchFonts(param);
 			setAllFonts(res);
 
-			// If changing to a specific category, filter by category
-			if (newCategory) {
+			// Handle different category filters
+			if (newCategory === "favorites") {
+				// Filter to show only favorited fonts
+				const favorites = getFavorites();
+				const favoriteFontFamilies = favorites.map(f => f.family);
+				const favoriteFonts = res.filter(font => favoriteFontFamilies.includes(font.family));
+				setFonts(favoriteFonts);
+			} else if (newCategory) {
+				// Filter by regular category
 				const categoryFonts = res.filter(font => String(font.category) === newCategory);
 				setFonts(categoryFonts);
 			} else {

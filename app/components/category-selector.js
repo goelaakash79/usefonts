@@ -13,9 +13,12 @@
 
 'use client'
 
+import FavoritesCounter from './favorites-counter'
+
 export default function CategorySelector({ category, handleCategoryChange }) {
     const categoryOptions = [
         { value: null, label: "All" },
+        { value: "favorites", label: "Favorites" },
         { value: "serif", label: "Serif" },
         { value: "sans-serif", label: "Sans Serif" },
         { value: "display", label: "Display" },
@@ -39,6 +42,7 @@ export default function CategorySelector({ category, handleCategoryChange }) {
                             }`}
                     >
                         {option.label}
+                        {option.value === 'favorites' && <FavoritesCounter />}
                     </button>
                 ))}
             </div>

@@ -13,8 +13,10 @@
 
 'use client'
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useFontLoader, createFontPreviewStyle } from "../../lib/font-loader";
+
+import { useFavorites } from "../../hooks/use-favorites";
 
 const FontCard = React.memo(({ font, onClick }) => {
 	// Load the actual font family for this card
@@ -25,7 +27,7 @@ const FontCard = React.memo(({ font, onClick }) => {
 
 	return (
 		<div
-			className="cursor-pointer hover:text-primary rounded-lg transition-colors group"
+			className="cursor-pointer hover:text-primary rounded-lg transition-colors group relative"
 			onClick={() => onClick(font)}
 			data-font-family={font?.family}
 		>
@@ -37,6 +39,7 @@ const FontCard = React.memo(({ font, onClick }) => {
 					{font && font.category}
 				</span>
 			</div>
+
 			<div
 				className="text-base text-slate-600 w-full tracking-tight"
 				style={fontNameStyle}

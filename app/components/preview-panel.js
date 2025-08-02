@@ -13,14 +13,15 @@
 
 'use client'
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import TextUtil from "./Preview/Text";
 import Navigation from "./Preview/Navigation";
 import { Separator } from "@/components/ui/separator";
-import { ArrowUpRight } from "@geist-ui/icons";
+import { ArrowUpRight, Heart, HeartFill } from "@geist-ui/icons";
 import Link from "next/link";
 import { LoginForm } from "@/components/login-form";
 import { SectionCards } from "@/components/section-cards";
+import { useFavorites } from "../../hooks/use-favorites";
 
 const PreviewCard = ({ font, onClose }) => {
 	const previewText = "A ship in the harbor is safe, but that is not what a ship is for."
@@ -29,6 +30,25 @@ const PreviewCard = ({ font, onClose }) => {
 
 	// Check if no font is selected
 	const isFontSelected = Object.keys(font).length > 0;
+
+	// Favorites management
+	const { isFavorite, toggleFavoriteStatus } = useFavorites();
+	const [isFavorited, setIsFavorited] = useState(false);
+
+	// Update favorite status when font changes
+	useEffect(() => {
+		if (font && font.family) {
+			setIsFavorited(isFavorite(font.family));
+		}
+	}, [font, isFavorite]);
+
+	// Handle favorite toggle
+	const handleFavoriteToggle = () => {
+		if (font && font.family) {
+			toggleFavoriteStatus(font);
+			setIsFavorited(!isFavorited);
+		}
+	};
 
 	return (
 		<div className="bg-white overflow-y-scroll h-screen py-12 px-10">
@@ -40,7 +60,7 @@ const PreviewCard = ({ font, onClose }) => {
 			>
 				<svg viewBox="0 0 384 384" xmlSpace="preserve" height="20">
 					<circle cx={192} cy={192} r={176} fill="#E9C46A" />
-					<g fill="#012e52">
+					<g fill="#525DC0">
 						<path d="M368 176c-8.832 0-16 7.168-16 16 0 88.224-71.776 160-160 160S32 280.224 32 192 103.776 32 192 32c42.944 0 83.264 16.792 113.528 47.272 6.216 6.264 16.344 6.304 22.624.08 6.272-6.224 6.304-16.352.08-22.632C291.92 20.144 243.536 0 192 0 86.128 0 0 86.128 0 192s86.128 192 192 192c105.864 0 192-86.128 192-192 0-8.832-7.168-16-16-16z" />
 						<path d="M251.312 132.688c-6.248-6.248-16.376-6.248-22.624 0L192 169.376l-36.688-36.688c-6.24-6.248-16.384-6.248-22.624 0-6.248 6.248-6.248 16.376 0 22.624L169.376 192l-36.688 36.688c-6.248 6.248-6.248 16.376 0 22.624C135.808 254.44 139.904 256 144 256s8.192-1.56 11.312-4.688L192 214.624l36.688 36.688C231.816 254.44 235.904 256 240 256s8.184-1.56 11.312-4.688c6.248-6.248 6.248-16.376 0-22.624L214.624 192l36.688-36.688c6.248-6.248 6.248-16.376 0-22.624z" />
 					</g>
@@ -69,21 +89,32 @@ const PreviewCard = ({ font, onClose }) => {
 							<span className="text-sm px-2 py-1 rounded-sm bg-white/50 border border-gray-200 font-normal font-['Space_Mono'] uppercase text-gray-600 tracking-tighter">
 								{font.category}
 							</span>{" "}
-							<Link
-								href={`https://fonts.google.com/specimen/${font.family
-									.split(" ")
-									.join(
-										"+"
-									)}?preview.text=${previewText}&preview.text_type=custom`}
-								rel="noopener noreferrer"
-								target="_blank"
-								className="text-primary font-medium text-md font-['Geist'] hover:text-primary tracking-tight"
-							>
-								<div className="inline-flex gap-1 items-center">
-									<div className="leading-none">Google fonts</div>
-									<ArrowUpRight color="#525DC0" size={16} />
+							<div>
+								<div className="inline-flex gap-4 items-center">
+									<button
+										onClick={handleFavoriteToggle}
+										className="p-4 hover:bg-indigo-100 rounded-full transition-colors duration-200"
+										title={isFavorited ? "Remove from favorites" : "Add to favorites"}
+									>
+										{isFavorited ? (
+											<HeartFill color="#525DC0" size={20} />
+										) : (
+											<Heart color="#525DC0" size={20} />
+										)}
+									</button>
+									<Link href={`https://fonts.google.com/specimen/${font.family
+										.split(" ")
+										.join(
+											"+"
+										)}?preview.text=${previewText}&preview.text_type=custom`}
+										rel="noopener noreferrer"
+										target="_blank"
+										className="text-primary font-medium text-md font-['Geist'] hover:text-primary tracking-tight inline-flex gap-1 items-center">
+										<div className="leading-none">Google fonts</div>
+										<ArrowUpRight color="#525DC0" size={16} />
+									</Link>
 								</div>
-							</Link>
+							</div>
 						</div>
 					</div>
 					<Separator className="my-8" />
