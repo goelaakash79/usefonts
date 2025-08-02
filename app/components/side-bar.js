@@ -15,7 +15,7 @@
 
 import FontList from "./font-list-view";
 import SearchBox from "./SearchBox";
-import Loader from "./loader";
+import Loader from "./Loader";
 import SortSelector from "./sort-selector";
 import Lottie from "lottie-react";
 import logoLottie from "../../public/assets/logo.json";
