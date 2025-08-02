@@ -1,3 +1,16 @@
+/**
+ * Search Box Component
+ * 
+ * Search input component with debounced search functionality.
+ * Provides real-time font filtering as user types.
+ * 
+ * Features:
+ * - Debounced search to prevent excessive API calls
+ * - Real-time font filtering
+ * - Clean, accessible input design
+ * - Integration with main search handler
+ */
+
 'use client'
 
 import { Input } from "@/components/ui/input";

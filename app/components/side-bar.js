@@ -1,13 +1,38 @@
+/**
+ * Side Bar Component
+ * 
+ * The main sidebar that contains the font list, search, filters, and controls.
+ * This component handles the left panel of the application layout.
+ * 
+ * Features:
+ * - Font search functionality
+ * - Category and sort filtering
+ * - Font list display with loading states
+ * - Responsive design for mobile and desktop
+ */
+
 'use client'
 
 import FontList from "./font-list-view";
 import SearchBox from "./SearchBox";
 import Loader from "./Loader";
 import SortSelector from "./sort-selector";
-
 import Lottie from "lottie-react";
 import logoLottie from "../../public/assets/logo.json";
 import CategorySelector from "./category-selector";
+/**
+ * Side Bar Component Props
+ * @param {Function} handleSearch - Function to handle search input
+ * @param {string|null} category - Current selected category filter
+ * @param {boolean} loading - Loading state for UI feedback
+ * @param {Array} fonts - Array of filtered fonts to display
+ * @param {Array} tempfonts - Limited array of fonts for performance (max 100)
+ * @param {Array} allfonts - Complete array of all fonts
+ * @param {Function} handleClick - Function to handle font selection
+ * @param {Function} handleCategoryChange - Function to handle category filter changes
+ * @param {Function} handleSortChange - Function to handle sort parameter changes
+ * @param {string} currentSort - Current sort parameter
+ */
 export default function SideBar({
     handleSearch,
     category,

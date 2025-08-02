@@ -43,7 +43,7 @@
 }
 
 @theme {
-	--color-light: #FEF6E4;
+	--color-light: #FAFAFA;
 	--color-yellow: #E9C46A;
 	--color-shadow: #BA9D55;
 	--color-orange: #E76F51;
@@ -182,7 +182,7 @@ body {
 }
 
 @theme {
-	--color-background: #FEF6E4;
+	--color-background: #FAFAFA;
 	--color-foreground: #2D3748;
 	--color-primary: #525DC0;
 	--color-secondary: #E9C46A;

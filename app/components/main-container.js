@@ -1,23 +1,51 @@
+/**
+ * Main Container Component
+ * 
+ * This is the root component that manages the entire font preview application.
+ * It handles font fetching, filtering, sorting, and state management for the app.
+ * 
+ * Features:
+ * - Font data fetching and caching
+ * - Category and sort filtering
+ * - Search functionality
+ * - Font preloading optimization
+ * - Mobile responsive layout
+ */
+
 'use client'
 
 import React, { useState, useEffect } from "react";
-
 import PreviewCard from "./preview-panel";
-
 import { fetchFonts } from "../../lib/service";
 import fontPreloaderV2 from "../../lib/font-preloader-v2";
-
 import SideBar from "./side-bar";
 
 const MainContainer = () => {
+	// State for sort parameter (ALPHA, POPULARITY, DATE, STYLE, TRENDING)
 	const [param, setParam] = useState("ALPHA");
+
+	// State for category filter (serif, sans-serif, display, monospace, handwriting, null for all)
 	const [category, setCategory] = useState(null);
+
+	// State for filtered fonts (what user sees)
 	const [fonts, setFonts] = useState([]);
+
+	// State for all fonts (complete dataset)
 	const [allfonts, setAllFonts] = useState([]);
+
+	// Loading state for UI feedback
 	const [loading, setLoading] = useState(true);
+
+	// Mobile sheet state for responsive design
 	const [mobileSheet, setMobileSheet] = useState(false);
+
+	// Currently selected font for preview
 	const [selectedFont, setSelectedFont] = useState({});
 
+	/**
+	 * Initial font loading effect
+	 * Fetches fonts when component mounts or sort parameter changes
+	 */
 	useEffect(() => {
 		(async () => {
 			try {
@@ -35,6 +63,10 @@ const MainContainer = () => {
 		})();
 	}, [param]);
 
+	/**
+	 * Handles category filter changes
+	 * @param {string|null} newCategory - The new category to filter by (null for all categories)
+	 */
 	const handleCategoryChange = async (newCategory) => {
 		setLoading(true);
 		setCategory(newCategory);
@@ -61,6 +93,10 @@ const MainContainer = () => {
 		}
 	};
 
+	/**
+	 * Handles sort parameter changes
+	 * @param {string} sortBy - The sort parameter (ALPHA, POPULARITY, DATE, STYLE, TRENDING)
+	 */
 	const handleSortChange = async (sortBy) => {
 		setLoading(true);
 		setParam(sortBy);
@@ -85,6 +121,11 @@ const MainContainer = () => {
 		}
 	};
 
+	/**
+	 * Handles search functionality
+	 * Clears all filters and searches across all fonts
+	 * @param {string} value - The search term
+	 */
 	const handleSearch = async value => {
 		setLoading(true);
 		value = `${value}`.toLowerCase();
@@ -111,15 +152,23 @@ const MainContainer = () => {
 		}
 	};
 
+	/**
+	 * Handles font selection for preview
+	 * @param {Object} font - The selected font object
+	 */
 	const handleClick = font => {
 		setSelectedFont(font);
 		setMobileSheet(true);
 	};
 
+	/**
+	 * Handles closing the mobile preview sheet
+	 */
 	const handleSheetClose = () => {
 		setMobileSheet(false);
 	};
 
+	// Limit displayed fonts to 100 for performance
 	const tempfonts =
 		fonts && fonts.length >= 100 ? fonts.slice(0, 100) : fonts;
 	return (

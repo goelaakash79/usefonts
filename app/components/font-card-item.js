@@ -1,3 +1,16 @@
+/**
+ * Font Card Item Component
+ * 
+ * Individual font card that displays a font with preview text.
+ * Uses React.memo for performance optimization and includes font loading states.
+ * 
+ * Features:
+ * - Dynamic font loading and preview
+ * - Performance optimization with React.memo
+ * - Loading state indicators
+ * - Click handling for font selection
+ */
+
 'use client'
 
 import React from "react";

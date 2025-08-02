@@ -1,3 +1,16 @@
+/**
+ * Text Preview Component
+ * 
+ * Displays font preview in heading and paragraph contexts.
+ * Allows users to see how fonts look in different text styles.
+ * 
+ * Features:
+ * - Editable heading and paragraph previews
+ * - Dynamic font loading and application
+ * - Content editable for interactive testing
+ * - Loading state indicators
+ */
+
 'use client'
 
 import React, { useState } from "react";

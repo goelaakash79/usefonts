@@ -1,5 +1,7 @@
 import { Geist, Space_Mono } from "next/font/google";
 import "./globals.css";
+import ConditionalAnalytics from "./components/conditional-analytics";
+import ErrorBoundary from "./components/error-boundary";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,11 +28,12 @@ export default function RootLayout({ children }) {
         <link rel="icon" href="/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/manifest.json" />
       </head>
       <body className={`${geistSans.variable} ${spaceMono.variable} antialiased`}>
-        {children}
+        <ErrorBoundary>
+          {children}
+          <ConditionalAnalytics />
+        </ErrorBoundary>
       </body>
     </html>
   )

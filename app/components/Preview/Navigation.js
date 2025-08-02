@@ -1,3 +1,16 @@
+/**
+ * Navigation Preview Component
+ * 
+ * Displays font preview in navigation/menu contexts.
+ * Shows how fonts look in typical navigation elements.
+ * 
+ * Features:
+ * - Navigation menu preview with font styling
+ * - Dynamic font loading and application
+ * - Realistic navigation layout
+ * - Loading state indicators
+ */
+
 'use client'
 
 import React, { useState } from "react";

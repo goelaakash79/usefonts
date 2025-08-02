@@ -1,19 +1,25 @@
+/**
+ * Preview Panel Component
+ * 
+ * Main preview area that displays selected font in various UI contexts.
+ * Shows font previews, navigation, text samples, forms, and cards.
+ * 
+ * Features:
+ * - Font preview in multiple UI contexts
+ * - Google Fonts integration link
+ * - Mobile responsive design
+ * - Loading states and empty states
+ */
+
 'use client'
 
 import React from "react";
-
 import TextUtil from "./Preview/Text";
-import Buttons from "./Preview/Buttons";
-// import Tags from "./Preview/Tags";
-import UtilDiv from "./Preview/UtilDiv";
-import Form from "./Preview/Form";
 import Navigation from "./Preview/Navigation";
-import ShadcnExample from "./ShadcnExample";
 import { Separator } from "@/components/ui/separator";
 import { ArrowUpRight } from "@geist-ui/icons";
 import Link from "next/link";
 import { LoginForm } from "@/components/login-form";
-import { SiteHeader } from "@/components/site-header";
 import { SectionCards } from "@/components/section-cards";
 
 const PreviewCard = ({ font, onClose }) => {

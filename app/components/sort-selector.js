@@ -1,3 +1,16 @@
+/**
+ * Sort Selector Component
+ * 
+ * Filter component that allows users to sort fonts by different criteria.
+ * Uses chip design for consistent UI with category selector.
+ * 
+ * Features:
+ * - Sort options (alphabetical, popularity, date, style, trending)
+ * - Chip-based UI design
+ * - Responsive layout
+ * - Integration with main sort handler
+ */
+
 'use client'
 
 import React from 'react'

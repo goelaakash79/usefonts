@@ -1,3 +1,16 @@
+/**
+ * Category Selector Component
+ * 
+ * Filter component that allows users to filter fonts by category.
+ * Uses chip design for consistent UI with sort selector.
+ * 
+ * Features:
+ * - Category filtering (serif, sans-serif, display, monospace, handwriting)
+ * - "All" option to clear category filter
+ * - Chip-based UI design
+ * - Responsive layout
+ */
+
 'use client'
 
 export default function CategorySelector({ category, handleCategoryChange }) {

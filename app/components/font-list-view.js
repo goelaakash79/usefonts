@@ -1,3 +1,16 @@
+/**
+ * Font List View Component
+ * 
+ * Container component that renders a list of font cards.
+ * Manages the display of fonts with separators and handles font selection.
+ * 
+ * Features:
+ * - Font list rendering with performance optimization
+ * - Font selection handling
+ * - Visual separators between font cards
+ * - Integration with font loading system
+ */
+
 'use client'
 
 import { useState } from "react";

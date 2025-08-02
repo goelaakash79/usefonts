@@ -1,3 +1,15 @@
+/**
+ * Loader Component
+ * 
+ * Loading skeleton component that displays while fonts are being fetched.
+ * Provides visual feedback during data loading states.
+ * 
+ * Features:
+ * - Skeleton loading animation
+ * - Consistent with font card layout
+ * - Multiple skeleton items for realistic loading
+ */
+
 import { Skeleton } from "@/components/ui/skeleton";
 import React from "react";
 import { Separator } from "@/components/ui/separator";
