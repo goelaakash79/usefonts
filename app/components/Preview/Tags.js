@@ -6,15 +6,15 @@ const Tag = styled.span`
 	@font-face {
 		font-family: ${({ family }) => family};
 		src: ${({ family }) => {
-			WebFont.load({
-				google: {
-					families: [family]
-				},
-				loading: () => {
-					/* console.log("wait"); */
-				}
-			});
-		}};
+		WebFont.load({
+			google: {
+				families: [family]
+			},
+			loading: () => {
+				/* console.log("wait"); */
+			}
+		});
+	}};
 	}
 	font-family: ${({ family }) => family}!important;
 `;
@@ -22,7 +22,7 @@ const Tag = styled.span`
 const Tags = ({ font }) => {
 	return (
 		<>
-			<p className="text-xs font-bold text-colors-gray mb-4">TAGS</p>
+			<div className="text-sm font-normal text-gray mb-4 font-['Space_Mono'] uppercase tracking-tighter">tags</div>
 			<div>
 				<Tag
 					family={(font && font.family) || "Sen"}

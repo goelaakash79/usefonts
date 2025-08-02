@@ -1,4 +1,4 @@
-import FontList from "./FontList";
+import FontList from "./font-list-view";
 import SearchBox from "./SearchBox";
 import Loader from "./Loader";
 
@@ -16,7 +16,7 @@ export default function SideBar({
     handleCategoryChange
 }) {
     return (
-        <div className="inline-flex flex-col sm:pt-6 pt-4 md:w-5/12 w-full container md:pl-20 md:pr-8 lg:pr-16 px-5 mx-auto gap-8 h-screen overflow-auto">
+        <div className="inline-flex flex-col sm:pt-6 pt-4 md:w-5/12 w-full container md:pl-20 md:pr-8 lg:pr-16 px-5 mx-auto gap-8 h-screen overflow-auto overflow-x-hidden">
 
 
             <div className="relative inline-flex flex-col gap-6 w-full">
@@ -33,8 +33,8 @@ export default function SideBar({
                     <Loader />
                 </div>
             ) : (
-                <div className="relative inline-flex flex-col gap-2 overflow-auto">
-                    <p className="font-semibold font-['Space_Mono'] uppercase text-sm text-gray">
+                <div className="relative inline-flex flex-col gap-4 overflow-auto">
+                    <p className="font-semibold font-['Space_Mono'] uppercase text-sm text-gray-400 tracking-tighter">
                         Showing {fonts && tempfonts.length} of{" "}
                         {allfonts && allfonts.length} fonts
                     </p>

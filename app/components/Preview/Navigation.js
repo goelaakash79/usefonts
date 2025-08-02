@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 import { useFontLoader, createFontPreviewStyle } from "../../../lib/font-loader";
+import Lottie from "lottie-react";
+import logoAnimation from "@/public/assets/logo.json";
+import { Button } from "@/components/ui/button";
 
 const Navigation = ({ font }) => {
 	const { isLoaded, isLoading } = useFontLoader(font?.family);
@@ -9,70 +12,50 @@ const Navigation = ({ font }) => {
 
 	return (
 		<>
-			<p className="text-xs font-bold text-gray mb-4">
-				NAVIGATION
-			</p>
-			<div style={fontStyle}>
-				<nav className="flex items-center justify-between flex-wrap bg-orange py-6 px-10 -mx-10">
-					<div className="flex items-center flex-shrink-0 text-white mr-6">
-						<span className="font-bold text-2xl">usefonts</span>
-					</div>
-					<div className="block lg:hidden">
-						<button className="flex items-center px-3 py-2 border rounded text-white border-teal-400 hover:text-white hover:border-white">
-							<svg
-								className="fill-current h-3 w-3"
-								viewBox="0 0 20 20"
-								xmlns="http://www.w3.org/2000/svg"
-							>
-								<title>Menu</title>
-								<path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
-							</svg>
-						</button>
-					</div>
-					<div className="w-full md:block flex-grow lg:flex lg:items-center lg:w-auto hidden">
-						<div className="text-sm lg:flex-grow">
+			<div className="flex flex-col gap-2">
+				<div className="text-sm font-normal text-gray font-['Space_Mono'] uppercase tracking-tighter">navigation</div>
+				<div style={fontStyle}>
+					<nav className="inline-flex items-center w-full justify-start bg-neutral-100 border border-gray-200 py-2 pr-2 pl-6 rounded-full shadow-sm">
+						<div className="flex-1 text-white">
+							<Lottie animationData={logoAnimation} loop={true} className="w-12 h-12" />
+						</div>
+
+						<div className="w-full inline-flex justify-center items-center text-base tracking-tighter text-gray-700 gap-6">
+
 							<a
 								href="https://tailwindcss.com/"
-								className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4"
 							>
 								Home
 							</a>
 							<a
 								href="https://refactoringui.com/"
-								className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4"
 							>
-								About
+								Projects
 							</a>
 							<a
 								href="https://dsckiet.com/"
-								className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white mr-4"
 							>
 								Team
 							</a>
+
 							<a
-								href="https://twitter.com/goelaakash79"
-								className="block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white"
+								href="https://dsckiet.com/"
 							>
-								Contact
+								About
 							</a>
+
 						</div>
-						<div>
-							<a
-								href="https://github.com/goelaakash79"
-								className="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-teal-500 hover:bg-white mt-4 lg:mt-0"
-							>
-								Become a member
-							</a>
+						<div className="float-right">
+							<Button className="rounded-full h-10">Become a member</Button>
 						</div>
-					</div>
-				</nav>
+					</nav>
+				</div>
 			</div>
 			{isLoading && (
 				<div className="text-xs text-gray mt-2">
 					Loading font...
 				</div>
 			)}
-			<div className="h-8"></div>
 		</>
 	);
 };
