@@ -19,8 +19,8 @@ const FontList = ({ fonts, allfonts, cardClick }) => {
 
 			{/* Font List */}
 			{fonts &&
-				fonts.map(font => (
-					<div className="inline-flex flex-col gap-0" key={font.family}>
+				fonts.map((font, index) => (
+					<div className="inline-flex flex-col gap-0" key={`${font.family}-${index}`}>
 						<FontCard
 							font={font}
 							onClick={handleClick}

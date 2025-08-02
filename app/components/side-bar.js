@@ -1,6 +1,7 @@
 import FontList from "./font-list-view";
 import SearchBox from "./SearchBox";
 import Loader from "./Loader";
+import SortSelector from "./sort-selector";
 
 import Lottie from "lottie-react";
 import logoLottie from "../../public/assets/logo.json";
@@ -13,10 +14,13 @@ export default function SideBar({
     tempfonts,
     allfonts,
     handleClick,
-    handleCategoryChange
+    handleCategoryChange,
+    handleSortChange,
+    currentSort
 }) {
     return (
         <div className="inline-flex flex-col sm:pt-6 pt-4 md:w-5/12 w-full container md:pl-20 md:pr-8 lg:pr-16 px-5 mx-auto gap-8 h-screen overflow-auto overflow-x-hidden">
+            <div className="absolute inset-0 h-full w-full bg-[linear-gradient(to_right,#0000000a_1px,transparent_1px),linear-gradient(to_bottom,#2828280a_1px,transparent_1px)] bg-[size:16px_16px] opacity-32 z-0"></div>
 
 
             <div className="relative inline-flex flex-col gap-6 w-full">
@@ -26,6 +30,8 @@ export default function SideBar({
                 <SearchBox onSearch={handleSearch} className="fixed" />
 
                 <MenuBar category={category} handleCategoryChange={handleCategoryChange} className="w-full" />
+
+                <SortSelector currentSort={currentSort} onSortChange={handleSortChange} />
             </div>
 
             {loading ? (

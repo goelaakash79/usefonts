@@ -15,7 +15,7 @@ const Navigation = ({ font }) => {
 			<div className="flex flex-col gap-2">
 				<div className="text-sm font-normal text-gray font-['Space_Mono'] uppercase tracking-tighter">navigation</div>
 				<div style={fontStyle}>
-					<nav className="inline-flex items-center w-full justify-start bg-neutral-100 border border-gray-200 py-2 pr-2 pl-6 rounded-full shadow-sm">
+					<nav className="inline-flex items-center w-full justify-start bg-neutral-100 border border-gray-200 py-1 pr-2 pl-6 rounded-xl shadow-sm">
 						<div className="flex-1 text-white">
 							<Lottie animationData={logoAnimation} loop={true} className="w-12 h-12" />
 						</div>
@@ -46,7 +46,7 @@ const Navigation = ({ font }) => {
 
 						</div>
 						<div className="float-right">
-							<Button className="rounded-full h-10">Become a member</Button>
+							<Button className="rounded-lg h-10">Become a member</Button>
 						</div>
 					</nav>
 				</div>

@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import PreviewCard from "./preview-panel";
 
 import { fetchFonts } from "../../lib/service";
+import fontPreloaderV2 from "../../lib/font-preloader-v2";
 
 import SideBar from "./side-bar";
 
@@ -25,6 +26,9 @@ const MainContainer = () => {
 				setAllFonts(res);
 				setFonts(res);
 				setLoading(false);
+
+				// Initialize font preloading after fonts are loaded
+				fontPreloaderV2.initialize(res);
 			} catch (err) {
 				setLoading(false);
 			}
@@ -34,20 +38,45 @@ const MainContainer = () => {
 	const handleCategoryChange = category => {
 		setLoading(true);
 		setCategory(category);
-		setFonts(allfonts.filter(font => String(font.category) === category));
+		const categoryFonts = allfonts.filter(font => String(font.category) === category);
+		setFonts(categoryFonts);
 		setLoading(false);
+	};
+
+	const handleSortChange = async (sortBy) => {
+		setLoading(true);
+		setParam(sortBy);
+		try {
+			const res = await fetchFonts(sortBy);
+			setAllFonts(res);
+
+			// Apply category filter if one is selected
+			if (category) {
+				const categoryFonts = res.filter(font => String(font.category) === category);
+				setFonts(categoryFonts);
+			} else {
+				setFonts(res);
+			}
+
+			// Initialize font preloading with new fonts
+			fontPreloaderV2.initialize(res);
+		} catch (err) {
+			console.error('Error fetching fonts with new sort:', err);
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	const handleSearch = async value => {
 		setLoading(true);
-		const res = await fetchFonts(param);
 		value = `${value}`.toLowerCase();
 
-		setFonts(
-			res.filter(font =>
-				String(font.family).toLowerCase().includes(value)
-			)
+		// Use the current allfonts (which are already sorted) instead of fetching again
+		const filteredFonts = allfonts.filter(font =>
+			String(font.family).toLowerCase().includes(value)
 		);
+
+		setFonts(filteredFonts);
 		setLoading(false);
 	};
 
@@ -64,7 +93,7 @@ const MainContainer = () => {
 		fonts && fonts.length >= 100 ? fonts.slice(0, 100) : fonts;
 	return (
 		<>
-			<div className="flex md:flex-row flex-col w-full bg-[#FAF9F6] h-screen overflow-hidden font-['Geist']">
+			<div className="flex md:flex-row flex-col w-full bg-neutral-100 h-screen overflow-hidden font-['Geist']">
 				<SideBar
 					handleSearch={handleSearch}
 					category={category}
@@ -74,6 +103,8 @@ const MainContainer = () => {
 					allfonts={allfonts}
 					handleClick={handleClick}
 					handleCategoryChange={handleCategoryChange}
+					handleSortChange={handleSortChange}
+					currentSort={param}
 				/>
 				<div
 					className={`transform md:w-7/12 md:block md:relative absolute md:top-auto top-0 w-full ease-linear transition-all duration-300 ${mobileSheet

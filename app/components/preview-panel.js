@@ -82,8 +82,8 @@ const PreviewCard = ({ font, onClose }) => {
 					<div className="flex flex-col gap-8">
 						<Navigation font={font} />
 						<TextUtil font={font} />
-						<LoginForm />
-						<SectionCards />
+						<LoginForm font={font} />
+						<SectionCards font={font} />
 					</div>
 				</>
 			)}

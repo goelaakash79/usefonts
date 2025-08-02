@@ -1,14 +1,11 @@
 'use client'
 
+import React from "react";
 import { useFontLoader, createFontPreviewStyle } from "../../lib/font-loader";
 
-const FontCard = ({ font, onClick, preFont }) => {
-	console.log(font)
+const FontCard = React.memo(({ font, onClick }) => {
 	// Load the actual font family for this card
 	const { isLoaded, isLoading } = useFontLoader(font?.family);
-
-	// Create style for the preview text using the selected preFont
-	const previewStyle = createFontPreviewStyle(preFont, true); // Always show preFont when selected
 
 	// Create style for the font name using the actual font family
 	const fontNameStyle = createFontPreviewStyle(font?.family, isLoaded);
@@ -17,6 +14,7 @@ const FontCard = ({ font, onClick, preFont }) => {
 		<div
 			className="cursor-pointer hover:text-primary rounded-lg transition-colors group"
 			onClick={() => onClick(font)}
+			data-font-family={font?.family}
 		>
 			<div
 				className="text-2xl text-gray-800 font-medium font-['Geist'] tracking-tighter group-hover:text-gray-900 mb-1"
@@ -27,10 +25,10 @@ const FontCard = ({ font, onClick, preFont }) => {
 				</span>
 			</div>
 			<div
-				className="text-base text-slate-600 w-full tracking-tight font-['Geist']"
-			// style={previewStyle}
+				className="text-base text-slate-600 w-full tracking-tight"
+				style={fontNameStyle}
 			>
-				When metrics are missing, let happiness be your guide.
+				Midnight rain painted the city streets, reflecting neon lights in shimmering puddles everywhere.
 			</div>
 			{isLoading && (
 				<div className="text-xs text-gray-500 mt-1">
@@ -39,6 +37,9 @@ const FontCard = ({ font, onClick, preFont }) => {
 			)}
 		</div>
 	);
-};
+}, (prevProps, nextProps) => {
+	// Only re-render if the font family changes
+	return prevProps.font?.family === nextProps.font?.family;
+});
 
 export default FontCard;

@@ -4,11 +4,15 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import templateImage from "@/public/assets/template-image.jpg"
+import { useFontLoader, createFontPreviewStyle } from "../lib/font-loader"
 
 export function LoginForm({
   className,
+  font,
   ...props
 }) {
+  const { isLoaded, isLoading } = useFontLoader(font?.family)
+  const fontStyle = createFontPreviewStyle(font?.family, isLoaded)
   return (
     <div className={cn("flex flex-col gap-2", className)} {...props}>
       <div className="text-sm font-normal text-gray font-['Space_Mono'] uppercase tracking-tighter">FORMS</div>
@@ -17,8 +21,8 @@ export function LoginForm({
           <form className="p-6 md:p-8">
             <div className="flex flex-col gap-6">
               <div className="flex flex-col items-center text-center">
-                <h1 className="text-2xl font-bold">Welcome back</h1>
-                <p className="text-muted-foreground text-balance">
+                <h1 className="text-2xl font-bold" style={fontStyle}>Welcome back</h1>
+                <p className="text-muted-foreground text-balance" style={fontStyle}>
                   Login to your Acme Inc account
                 </p>
               </div>
@@ -70,7 +74,7 @@ export function LoginForm({
                   <span className="sr-only">Login with Meta</span>
                 </Button>
               </div>
-              <div className="text-center text-sm">
+              <div className="text-center text-sm" style={fontStyle}>
                 Don&apos;t have an account?{" "}
                 <a href="#" className="underline underline-offset-4">
                   Sign up

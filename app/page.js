@@ -9,7 +9,7 @@ export const dynamic = 'force-dynamic'
 export default function Home() {
   return (
     <>
-      <GoogleAnalytics />
+      {/* <GoogleAnalytics /> */}
       {/* <div className="relative bg-colors-light"> */}
       <MainContainer />
       {/* </section> */}
