@@ -15,10 +15,26 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata = {
-  title: 'type',
-  description: 'Tool to find the perfect font for your next project.',
-  keywords: 'Google Fonts, fonts, design, font preview, font, developer, frontend dev, goelaakash79',
-  author: 'Aakash Goel | https://twitter.com/goelaakash79',
+  title: 'type | browse fonts in style',
+  description: 'Tool to find the perfect typeface for your next project.',
+  keywords: 'Google Fonts, fonts, design, font preview, font, developer, frontend dev, goelaakash79, ag-w.site, typeface, designer, product designer, ather energy, ather, tools, tools for designers, tools for developers, tools for product designers, tools for frontend developers, tools for backend developers, tools for full stack developers, tools for designers, tools for developers, tools for product designers, tools for frontend developers, tools for backend developers, tools for full stack developers',
+  author: 'Aakash Goel | https://twitter.com/goelaakash79, https://x.com/goelaakash79, https://www.linkedin.com/in/goelaakash79/, https://www.instagram.com/ohaakash/, https://ag-w.site',
+  openGraph: {
+    title: "type | browse fonts in style",
+    description: "Tool to find the perfect typeface for your next project.",
+    url: "https://type.ag-w.site",
+    siteName: "type | browse fonts in style",
+    images: [
+      {
+        url: "https://nq8v5dptbdzmmi3v.public.blob.vercel-storage.com/type-met-image",
+        width: 1200,
+        height: 628,
+        alt: "meta image",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  }
 }
 
 export default function RootLayout({ children }) {
