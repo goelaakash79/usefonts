@@ -1,3 +1,5 @@
+'use client'
+
 import { useState } from "react";
 import FontCard from "./font-card-item";
 import { Separator } from "@/components/ui/separator";

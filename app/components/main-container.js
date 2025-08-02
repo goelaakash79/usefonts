@@ -35,12 +35,30 @@ const MainContainer = () => {
 		})();
 	}, [param]);
 
-	const handleCategoryChange = category => {
+	const handleCategoryChange = async (newCategory) => {
 		setLoading(true);
-		setCategory(category);
-		const categoryFonts = allfonts.filter(font => String(font.category) === category);
-		setFonts(categoryFonts);
-		setLoading(false);
+		setCategory(newCategory);
+
+		try {
+			const res = await fetchFonts(param);
+			setAllFonts(res);
+
+			// If changing to a specific category, filter by category
+			if (newCategory) {
+				const categoryFonts = res.filter(font => String(font.category) === newCategory);
+				setFonts(categoryFonts);
+			} else {
+				// If clearing category, show all fonts
+				setFonts(res);
+			}
+
+			// Initialize font preloading with new fonts
+			fontPreloaderV2.initialize(res);
+		} catch (err) {
+			console.error('Error fetching fonts for category:', err);
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	const handleSortChange = async (sortBy) => {
@@ -71,13 +89,26 @@ const MainContainer = () => {
 		setLoading(true);
 		value = `${value}`.toLowerCase();
 
-		// Use the current allfonts (which are already sorted) instead of fetching again
-		const filteredFonts = allfonts.filter(font =>
-			String(font.family).toLowerCase().includes(value)
-		);
+		// Clear category and sort filters when searching
+		setCategory(null);
+		setParam("ALPHA");
 
-		setFonts(filteredFonts);
-		setLoading(false);
+		// Fetch all fonts with default sort (ALPHA) for search
+		try {
+			const res = await fetchFonts("ALPHA");
+			setAllFonts(res);
+
+			// Filter fonts based on search value
+			const filteredFonts = res.filter(font =>
+				String(font.family).toLowerCase().includes(value)
+			);
+
+			setFonts(filteredFonts);
+		} catch (err) {
+			console.error('Error fetching fonts for search:', err);
+		} finally {
+			setLoading(false);
+		}
 	};
 
 	const handleClick = font => {
@@ -93,7 +124,7 @@ const MainContainer = () => {
 		fonts && fonts.length >= 100 ? fonts.slice(0, 100) : fonts;
 	return (
 		<>
-			<div className="flex md:flex-row flex-col w-full bg-neutral-100 h-screen overflow-hidden font-['Geist']">
+			<div className="flex md:flex-row flex-col w-full h-screen overflow-hidden font-['Geist']">
 				<SideBar
 					handleSearch={handleSearch}
 					category={category}

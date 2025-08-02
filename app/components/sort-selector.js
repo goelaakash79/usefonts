@@ -4,7 +4,7 @@ import React from 'react'
 
 const SortSelector = ({ currentSort, onSortChange }) => {
     const sortOptions = [
-        { value: 'ALPHA', label: 'Alphabetical' },
+        { value: 'ALPHA', label: 'A-Z' },
         { value: 'POPULARITY', label: 'Popularity' },
         { value: 'DATE', label: 'Date Added' },
         { value: 'STYLE', label: 'Style' },

@@ -1,3 +1,5 @@
+'use client'
+
 import { Input } from "@/components/ui/input";
 import React, { useMemo } from "react";
 
@@ -33,7 +35,7 @@ const SearchBox = ({ onSearch }) => {
 			<Input
 				type="text"
 				placeholder="search your font here..."
-				className="py-6 px-4 text-base font-['Geist'] font-medium text-black rounded-xl tracking-tight bg-white"
+				className="py-6 px-4 text-lg font-['Geist'] font-normal text-black rounded-xl tracking-tight bg-white w-60"
 				// className="border-orange border border-b-4 w-full rounded-lg py-2 px-4 focus:outline-none"
 				onChange={handleChange}
 			/>

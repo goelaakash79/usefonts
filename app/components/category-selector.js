@@ -1,5 +1,8 @@
-export default function MenuBar({ category, handleCategoryChange }) {
+'use client'
+
+export default function CategorySelector({ category, handleCategoryChange }) {
     const categoryOptions = [
+        { value: null, label: "All" },
         { value: "serif", label: "Serif" },
         { value: "sans-serif", label: "Sans Serif" },
         { value: "display", label: "Display" },
