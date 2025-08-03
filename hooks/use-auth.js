@@ -88,6 +88,7 @@ export const useAuth = () => {
         try {
             // Always try to use API first, fallback to demo mode
             const apiUrl = buildApiUrl(API_ENDPOINTS.SEND_OTP)
+            logApiConfig()
 
             const response = await fetch(apiUrl, {
                 method: 'POST',
@@ -162,7 +163,7 @@ export const useAuth = () => {
 
             // Login user with API response
             login(data.user)
-            
+
             // Return enhanced response with registration info
             return {
                 ...data,
@@ -189,8 +190,8 @@ export const useAuth = () => {
 
                 // Login user
                 login(userData)
-                return { 
-                    success: true, 
+                return {
+                    success: true,
                     user: userData,
                     isNewUser: true,
                     message: 'Registration successful! Welcome to UseFonts.'
