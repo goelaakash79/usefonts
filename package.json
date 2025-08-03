@@ -34,6 +34,7 @@
     "@vercel/analytics": "^1.5.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "input-otp": "^1.4.2",
     "lottie-react": "^2.4.1",
     "lucide-react": "^0.536.0",
     "next": "15.2.4",

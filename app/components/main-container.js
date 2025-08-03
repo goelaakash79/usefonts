@@ -79,10 +79,14 @@ const MainContainer = () => {
 			// Handle different category filters
 			if (newCategory === "favorites") {
 				// Filter to show only favorited fonts
-				const favorites = getFavorites();
-				const favoriteFontFamilies = favorites.map(f => f.family);
-				const favoriteFonts = res.filter(font => favoriteFontFamilies.includes(font.family));
-				setFonts(favoriteFonts);
+				try {
+					const favorites = await getFavorites();
+					const favoriteFontFamilies = favorites.map(f => f.fontFamily || f.family);
+					const favoriteFonts = res.filter(font => favoriteFontFamilies.includes(font.family));
+					setFonts(favoriteFonts);
+				} catch (error) {
+					setFonts([]);
+				}
 			} else if (newCategory) {
 				// Filter by regular category
 				const categoryFonts = res.filter(font => String(font.category) === newCategory);
@@ -95,7 +99,7 @@ const MainContainer = () => {
 			// Initialize font preloading with new fonts
 			fontPreloaderV2.initialize(res);
 		} catch (err) {
-			console.error('Error fetching fonts for category:', err);
+			// Error fetching fonts for category
 		} finally {
 			setLoading(false);
 		}
@@ -123,7 +127,7 @@ const MainContainer = () => {
 			// Initialize font preloading with new fonts
 			fontPreloaderV2.initialize(res);
 		} catch (err) {
-			console.error('Error fetching fonts with new sort:', err);
+			// Error fetching fonts with new sort
 		} finally {
 			setLoading(false);
 		}
@@ -154,7 +158,7 @@ const MainContainer = () => {
 
 			setFonts(filteredFonts);
 		} catch (err) {
-			console.error('Error fetching fonts for search:', err);
+			// Error fetching fonts for search
 		} finally {
 			setLoading(false);
 		}

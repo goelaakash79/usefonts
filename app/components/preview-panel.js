@@ -22,6 +22,8 @@ import Link from "next/link";
 import { LoginForm } from "@/components/login-form";
 import { SectionCards } from "@/components/section-cards";
 import { useFavorites } from "../../hooks/use-favorites";
+import { useAuth } from "../../hooks/use-auth";
+import AuthDrawer from "./auth-drawer";
 
 const PreviewCard = ({ font, onClose }) => {
 	const previewText = "A ship in the harbor is safe, but that is not what a ship is for."
@@ -35,6 +37,10 @@ const PreviewCard = ({ font, onClose }) => {
 	const { isFavorite, toggleFavoriteStatus } = useFavorites();
 	const [isFavorited, setIsFavorited] = useState(false);
 
+	// Authentication management
+	const { isAuthenticated } = useAuth();
+	const [showAuthDrawer, setShowAuthDrawer] = useState(false);
+
 	// Update favorite status when font changes
 	useEffect(() => {
 		if (font && font.family) {
@@ -44,9 +50,23 @@ const PreviewCard = ({ font, onClose }) => {
 
 	// Handle favorite toggle
 	const handleFavoriteToggle = () => {
+		if (!isAuthenticated) {
+			setShowAuthDrawer(true);
+			return;
+		}
+
 		if (font && font.family) {
 			toggleFavoriteStatus(font);
 			setIsFavorited(!isFavorited);
+		}
+	};
+
+	// Handle successful authentication
+	const handleAuthSuccess = () => {
+		// After successful auth, automatically favorite the font
+		if (font && font.family) {
+			toggleFavoriteStatus(font);
+			setIsFavorited(true);
 		}
 	};
 
@@ -126,6 +146,13 @@ const PreviewCard = ({ font, onClose }) => {
 					</div>
 				</>
 			)}
+
+			{/* Authentication Drawer */}
+			<AuthDrawer
+				isOpen={showAuthDrawer}
+				onClose={() => setShowAuthDrawer(false)}
+				onSuccess={handleAuthSuccess}
+			/>
 		</div>
 	);
 };

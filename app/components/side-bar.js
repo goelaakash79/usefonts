@@ -15,11 +15,13 @@
 
 import FontList from "./font-list-view";
 import SearchBox from "./SearchBox";
-import Loader from "./Loader";
+import Loader from "./skeleton-loader";
 import SortSelector from "./sort-selector";
 import Lottie from "lottie-react";
 import logoLottie from "../../public/assets/logo.json";
 import CategorySelector from "./category-selector";
+import { useAuth } from "../../hooks/use-auth";
+import UserProfile from "./user-profile";
 /**
  * Side Bar Component Props
  * @param {Function} handleSearch - Function to handle search input
@@ -55,10 +57,9 @@ export default function SideBar({
                     <Lottie className="w-16" animationData={logoLottie} loop={true} />
                     <SearchBox onSearch={handleSearch} className="w-40" />
                 </div>
-                {/* <div className="inline-flex flex-col w-full"> */}
+                <UserProfile />
                 <CategorySelector category={category} handleCategoryChange={handleCategoryChange} className="w-full" />
                 <SortSelector currentSort={currentSort} onSortChange={handleSortChange} />
-                {/* </div> */}
             </div>
 
             {loading ? (

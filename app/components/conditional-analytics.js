@@ -22,14 +22,14 @@ export default function ConditionalAnalytics() {
                     const hasBlocker = detectContentBlocker()
 
                     if (hasBlocker) {
-                        console.warn('Analytics disabled due to content blocker detection')
+                        		// Analytics disabled due to content blocker detection
                         showContentBlockerWarning()
                         setShouldLoadAnalytics(false)
                     } else {
                         setShouldLoadAnalytics(true)
                     }
                 } catch (error) {
-                    console.warn('Analytics disabled due to error:', error)
+                    		// Analytics disabled due to error
                     setShouldLoadAnalytics(false)
                 }
             }

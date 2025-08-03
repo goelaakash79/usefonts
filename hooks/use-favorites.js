@@ -7,11 +7,13 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import {
-    getFavorites,
-    addToFavorites,
-    removeFromFavorites,
-    toggleFavorite,
-    isFavorite as checkIsFavorite
+	getFavorites,
+	addToFavorites,
+	removeFromFavorites,
+	toggleFavorite,
+	isFavorite as checkIsFavorite,
+	getFavoriteCount,
+	clearFavorites
 } from '../lib/favorites'
 
 /**
@@ -19,82 +21,102 @@ import {
  * @returns {Object} Object containing favorites state and methods
  */
 export const useFavorites = () => {
-    const [favorites, setFavorites] = useState([])
-    const [isLoaded, setIsLoaded] = useState(false)
+	const [favorites, setFavorites] = useState([])
+	const [isLoaded, setIsLoaded] = useState(false)
+	const [count, setCount] = useState(0)
 
-    // Load favorites from localStorage on mount and listen for changes
-    useEffect(() => {
-        const loadFavorites = () => {
-            const storedFavorites = getFavorites()
-            setFavorites(storedFavorites)
-            setIsLoaded(true)
-        }
+	// Load favorites from API on mount and listen for changes
+	useEffect(() => {
+		const loadFavorites = async () => {
+			try {
+				const storedFavorites = await getFavorites()
+				setFavorites(storedFavorites)
 
-        loadFavorites()
+				const favoriteCount = await getFavoriteCount()
+				setCount(favoriteCount)
 
-        // Listen for storage changes (e.g., from other tabs)
-        const handleStorageChange = (e) => {
-            if (e.key === 'type-font-favorites') {
-                loadFavorites()
-            }
-        }
+				setIsLoaded(true)
+			} catch (error) {
+				setIsLoaded(true)
+			}
+		}
 
-        // Listen for custom favorites update events (same tab)
-        const handleFavoritesUpdate = (e) => {
-            if (e.detail && e.detail.favorites) {
-                setFavorites(e.detail.favorites)
-            }
-        }
+		loadFavorites()
 
-        window.addEventListener('storage', handleStorageChange)
-        window.addEventListener('favoritesUpdated', handleFavoritesUpdate)
+		// Listen for custom favorites update events (same tab)
+		const handleFavoritesUpdate = async (e) => {
+			if (e.detail) {
+				// Reload favorites from API when updated
+				try {
+					const updatedFavorites = await getFavorites()
+					setFavorites(updatedFavorites)
 
-        return () => {
-            window.removeEventListener('storage', handleStorageChange)
-            window.removeEventListener('favoritesUpdated', handleFavoritesUpdate)
-        }
-    }, [])
+					const updatedCount = await getFavoriteCount()
+					setCount(updatedCount)
+				} catch (error) {
+					// Error updating favorites
+				}
+			}
+		}
 
-    // Add font to favorites
-    const addFavorite = useCallback((font) => {
-        const newFavorites = addToFavorites(font)
-        setFavorites(newFavorites)
-        return newFavorites
-    }, [])
+		window.addEventListener('favoritesUpdated', handleFavoritesUpdate)
 
-    // Remove font from favorites
-    const removeFavorite = useCallback((fontFamily) => {
-        const newFavorites = removeFromFavorites(fontFamily)
-        setFavorites(newFavorites)
-        return newFavorites
-    }, [])
+		return () => {
+			window.removeEventListener('favoritesUpdated', handleFavoritesUpdate)
+		}
+	}, [])
 
-    // Toggle favorite status
-    const toggleFavoriteStatus = useCallback((font) => {
-        const newFavorites = toggleFavorite(font)
-        setFavorites(newFavorites)
-        return newFavorites
-    }, [])
+	// Add font to favorites
+	const addFavorite = useCallback(async (font) => {
+		try {
+			await addToFavorites(font)
+			// State will be updated via the event listener
+		} catch (error) {
+			throw error
+		}
+	}, [])
 
-    // Check if font is favorited (reactive to current state)
-    const isFavorite = useCallback((fontFamily) => {
-        if (!fontFamily) return false
-        return favorites.some(f => f.family === fontFamily)
-    }, [favorites])
+	// Remove font from favorites
+	const removeFavorite = useCallback(async (fontFamily) => {
+		try {
+			await removeFromFavorites(fontFamily)
+			// State will be updated via the event listener
+		} catch (error) {
+			throw error
+		}
+	}, [])
 
-    // Clear all favorites
-    const clearAllFavorites = useCallback(() => {
-        setFavorites([])
-        localStorage.removeItem('type-font-favorites')
-    }, [])
+	// Toggle favorite status
+	const toggleFavoriteStatus = useCallback(async (font) => {
+		try {
+			await toggleFavorite(font)
+			// State will be updated via the event listener
+		} catch (error) {
+			throw error
+		}
+	}, [])
 
-    return {
-        favorites,
-        isLoaded,
-        addFavorite,
-        removeFavorite,
-        toggleFavoriteStatus,
-        isFavorite,
-        clearAllFavorites
-    }
+	// Check if font is favorited (reactive to current state)
+	const isFavorite = useCallback((fontFamily) => {
+		if (!fontFamily) return false
+		return favorites.some(f => f.fontFamily === fontFamily || f.family === fontFamily)
+	}, [favorites])
+
+	// Clear all favorites
+	const clearAllFavorites = useCallback(() => {
+		clearFavorites()
+		setFavorites([])
+		setCount(0)
+	}, [])
+
+	return {
+		favorites,
+		isLoaded,
+		count,
+		addFavorite,
+		removeFavorite,
+		toggleFavoriteStatus,
+		isFavorite,
+		clearAllFavorites
+	}
 } 

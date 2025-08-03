@@ -21,11 +21,11 @@ class ErrorBoundary extends React.Component {
 
     componentDidCatch(error, errorInfo) {
         // Log error to console but don't crash the app
-        console.warn('Error caught by boundary:', error, errorInfo)
+        		// Error caught by boundary
 
         // Check if it's a content blocker error
         if (error.message && error.message.includes('ERR_BLOCKED_BY_CONTENT_BLOCKER')) {
-            console.warn('Content blocker detected - some features may not work properly')
+            		// Content blocker detected
         }
     }
 
