@@ -162,7 +162,13 @@ export const useAuth = () => {
 
             // Login user with API response
             login(data.user)
-            return data
+            
+            // Return enhanced response with registration info
+            return {
+                ...data,
+                isNewUser: data.user.isNewUser || false,
+                message: data.user.isNewUser ? 'Registration successful! Welcome to UseFonts.' : 'Authentication successful!'
+            }
         } catch (error) {
             // Fallback to demo mode if API fails
             const email = sessionStorage.getItem('temp-email')
@@ -183,7 +189,12 @@ export const useAuth = () => {
 
                 // Login user
                 login(userData)
-                return { success: true, user: userData }
+                return { 
+                    success: true, 
+                    user: userData,
+                    isNewUser: true,
+                    message: 'Registration successful! Welcome to UseFonts.'
+                }
             }
 
             throw new Error(error.message || 'Failed to verify OTP')

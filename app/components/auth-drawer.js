@@ -48,8 +48,14 @@ const AuthDrawer = ({ isOpen, onClose, onSuccess }) => {
         setIsLoading(true)
 
         try {
-            await verifyOTP(otp)
-            setSuccessMessage('Authentication successful!')
+            const result = await verifyOTP(otp)
+            
+            // Show different message based on whether user is new or existing
+            const message = result.isNewUser 
+                ? 'Registration successful! Welcome to UseFonts.' 
+                : 'Authentication successful!'
+            
+            setSuccessMessage(message)
             setTimeout(() => {
                 onSuccess?.()
                 onClose()
